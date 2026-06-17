@@ -2,90 +2,153 @@
 <html lang="id">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Koding & KA Play - Workshop Guru</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Koding & KA Play - Full Elemen</title>
   
+  <!-- Memuat Google Blockly Engine -->
   <script src="https://unpkg.com/blockly/blockly_compressed.js"></script>
   <script src="https://unpkg.com/blockly/blocks_compressed.js"></script>
   <script src="https://unpkg.com/blockly/javascript_compressed.js"></script>
   <script src="https://unpkg.com/blockly/msg/id.js"></script>
   
   <style>
-    body { font-family: 'Segoe UI', sans-serif; margin: 15px; background-color: #f4f7f6; }
-    h2 { font-size: 1.4rem; color: #2c3e50; margin: 0 0 5px 0; }
-    p { font-size: 0.95rem; color: #555; margin: 0 0 15px 0; }
-    #blocklyArea { height: 60vh; width: 100%; border: 2px solid #34495e; border-radius: 8px; }
-    .btn { width: 100%; padding: 14px; background-color: #2ecc71; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: bold; margin-top: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-    .btn:hover { background-color: #27ae60; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0; padding: 15px; background-color: #f4f7f6; box-sizing: border-box;
+    }
+    .header-zone { background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-bottom: 15px; }
+    h2 { font-size: 1.5rem; color: #2c3e50; margin: 0 0 5px 0; }
+    p { font-size: 0.95rem; color: #555; margin: 0; line-height: 1.4; }
+    #blocklyArea { height: 65vh; width: 100%; border: 2px solid #34495e; border-radius: 8px; background-color: #ffffff; }
+    .btn-action {
+      width: 100%; padding: 15px; background-color: #007bff; color: white; border: none; border-radius: 8px;
+      cursor: pointer; font-size: 16px; font-weight: bold; margin-top: 15px; box-shadow: 0 4px 6px rgba(0, 123, 255, 0.2);
+    }
+    .btn-action:hover { background-color: #0056b3; }
   </style>
 </head>
 <body>
 
-  <h2>Aplikasi Pembelajaran Koding & KA</h2>
-  <p>Silakan pilih blok berdasarkan babak materi di menu kiri, susun di area kerja, lalu klik tombol jalankan.</p>
+  <div class="header-zone">
+    <h2>Eksplorasi Koding & Kecerdasan Artifisial</h2>
+    <p>Simulasi interaktif CP Informatika Fase D dan Fase E/F. Rangkai blok untuk membangun logika sistem, mengevaluasi etika AI, hingga menganalisis data.</p>
+  </div>
   
   <div id="blocklyArea"></div>
   
-  <button class="btn" onclick="jalankanLogika()">JALANKAN LOGIKA PROGRAM</button>
+  <button class="btn-action" onclick="jalankanSimulasi()">JALANKAN LOGIKA PROGRAM</button>
 
+  <!-- STRUKTUR TOOLBOX BERDASARKAN ELEMEN CP -->
   <xml id="toolbox" style="display: none">
     
-    <category name="BABAK 1: Flowchart & Proses" colour="#3498db">
-      <block type="text_print">
-        <value name="TEXT">
-          <shadow type="text"><field name="TEXT">Mulai: Robot Siap!</field></shadow>
-        </value>
-      </block>
-      <block type="text">
-        <field name="TEXT">Masukkan Kopi dan Air ke Wadah</field>
-      </block>
-      <block type="text">
-        <field name="TEXT">Tuangkan Kopi ke Gelas</field>
-      </block>
-    </category>
-    
-    <category name="BABAK 2: Percabangan (Kondisi)" colour="#e67e22">
+    <!-- ==================== KELOMPOK FASE D ==================== -->
+    <category name="Fase D: Berpikir Komputasional" colour="#2196F3">
       <block type="controls_if"></block>
       <block type="logic_compare"></block>
+      <block type="text_print">
+        <value name="TEXT"><shadow type="text"><field name="TEXT">Dekomposisi Masalah Selesai</field></shadow></value>
+      </block>
+      <block type="text"><field name="TEXT">Pola Ditemukan</field></block>
+    </category>
+
+    <category name="Fase D: Literasi Digital" colour="#4CAF50">
+      <block type="controls_if"></block>
+      <block type="text"><field name="TEXT">Cek Kredibilitas Sumber Berita</field></block>
+      <block type="text_print">
+        <value name="TEXT"><shadow type="text"><field name="TEXT">AKSI: Amankan Kata Sandi & Data Pribadi</field></shadow></value>
+      </block>
+    </category>
+
+    <category name="Fase D: Literasi & Etika KA" colour="#FF9800">
+      <block type="controls_if"></block>
+      <block type="text"><field name="TEXT">AI Mengandung Bias/Diskriminasi</field></block>
+      <block type="text_print">
+        <value name="TEXT"><shadow type="text"><field name="TEXT">EVALUASI: Libatkan Keputusan Manusia</field></shadow></value>
+      </block>
+    </category>
+
+    <category name="Fase D: Pemanfaatan KA" colour="#9C27B0">
+      <block type="text"><field name="TEXT">Input: Suara / Teks Pengguna</field></block>
+      <block type="text_print">
+        <value name="TEXT"><shadow type="text"><field name="TEXT">AI Output: Rekomendasi Jawaban Dibuat</field></shadow></value>
+      </block>
+    </category>
+
+    <!-- ==================== KELOMPOK FASE E & F ==================== -->
+    <category name="Fase E/F: Berpikir Komputasional" colour="#1E88E5">
+      <block type="controls_repeat_ext">
+        <value name="TIMES"><shadow type="math_number"><field name="NUM">10</field></shadow></value>
+      </block>
+      <block type="text"><field name="TEXT">Troubleshooting Jaringan Lokal</field></block>
+      <block type="text_print">
+        <value name="TEXT"><shadow type="text"><field name="TEXT">Optimasi Kinerja Sistem Selesai</field></shadow></value>
+      </block>
+    </category>
+
+    <category name="Fase E/F: Literasi Digital" colour="#43A047">
       <block type="logic_boolean"></block>
-      <block type="text">
-        <field name="TEXT">Palang Pintu Diturunkan</field>
-      </block>
-      <block type="text">
-        <field name="TEXT">Palang Pintu Dinaikkan</field>
+      <block type="text"><field name="TEXT">Autentikasi Dua Langkah (2FA) Aktif</field></block>
+      <block type="text_print">
+        <value name="TEXT"><shadow type="text"><field name="TEXT">Enkripsi Data untuk Mencegah Malware</field></shadow></value>
       </block>
     </category>
-    
-    <category name="BABAK 3: Implementasi KA (AI)" colour="#9b59b6">
-      <block type="text">
-        <field name="TEXT">AI Deteksi: Menggunakan Masker</field>
-      </block>
-      <block type="text">
-        <field name="TEXT">Akses Diterima, Pintu Terbuka</field>
-      </block>
-      <block type="text">
-        <field name="TEXT">Akses Ditolak, Alarm Berbunyi</field>
+
+    <category name="Fase E/F: Literasi & Etika KA" colour="#FB8C00">
+      <block type="text"><field name="TEXT">Analisis Kebijakan Privasi Algoritma</field></block>
+      <block type="text_print">
+        <value name="TEXT"><shadow type="text"><field name="TEXT">Penerapan Regulasi Penggunaan AI yang Bertanggung Jawab</field></shadow></value>
       </block>
     </category>
-    
+
+    <category name="Fase E/F: Pemanfaatan KA & Sistem" colour="#8E24AA">
+      <block type="text"><field name="TEXT">Inisialisasi Mikrokontroler & Modul Jaringan</field></block>
+      <block type="text"><field name="TEXT">Sensor ZA620_M5 Memindai Input</field></block>
+      <block type="text_print">
+        <value name="TEXT"><shadow type="text"><field name="TEXT">Sistem Machine Learning Memproses Pola Fisik</field></shadow></value>
+      </block>
+    </category>
+
+    <category name="Fase E/F: Algoritma & Pemrograman" colour="#E53935">
+      <block type="variables_set"><field name="VAR">status_koneksi</field></block>
+      <block type="text"><field name="TEXT">Terhubung ke Database Cloud / Firebase</field></block>
+      <block type="text_print">
+        <value name="TEXT"><shadow type="text"><field name="TEXT">Jalankan Skrip Otomasi (Google Apps Script)</field></shadow></value>
+      </block>
+    </category>
+
+    <category name="Fase E/F: Analisis Data" colour="#00ACC1">
+      <block type="variables_set"><field name="VAR">kapasitas_maksimal</field></block>
+      <block type="math_number"><field name="NUM">300</field></block>
+      <block type="math_arithmetic"></block>
+      <block type="text_print">
+        <value name="TEXT"><shadow type="text"><field name="TEXT">Visualisasi Data Real-Time di Dashboard Analytics</field></shadow></value>
+      </block>
+    </category>
+
   </xml>
 
   <script>
-    // Inisialisasi Workspace Blockly agar responsif di HP & Laptop
+    // Konfigurasi Area Kerja Blockly
     var workspace = Blockly.inject('blocklyArea', {
       toolbox: document.getElementById('toolbox'),
       trashcan: true,
-      zoom: { controls: true, wheel: false, startScale: 1.2, maxScale: 3, minScale: 0.5 }
+      zoom: {
+        controls: true, wheel: false, startScale: 1.1, maxScale: 3, minScale: 0.5, scaleSpeed: 1.2
+      },
+      move: { scrollbars: true, drag: true, wheel: false }
     });
 
-    // Fungsi untuk mengeksekusi susunan blok menjadi simulasi logika kode
-    function jalankanLogika() {
+    // Fungsi Interpretasi Kode
+    function jalankanSimulasi() {
       var code = Blockly.JavaScript.workspaceToCode(workspace);
       if (code) {
-          // Mengubah kode menjadi alert runtutan instruksi simulasi
-          alert("Sistem Berjalan! Runtutan Logika Mesin Anda:\n\n" + code);
+          try {
+              alert("Simulasi Logika Berhasil Dijalankan!\n\nInstruksi Mesin yang Dieksekusi:\n" + code);
+          } catch (e) {
+              alert("Oops! Ada kesalahan logika: " + e);
+          }
       } else {
-          alert("Area kerja masih kosong! Yuk, pilih babak materi di kiri dan tarik bloknya ke sini.");
+          alert("Kanvas masih kosong! Silakan tarik blok dari menu Fase D, E, atau F.");
       }
     }
   </script>
