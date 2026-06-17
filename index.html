@@ -14,21 +14,22 @@
     body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; margin: 0; padding: 15px; background-color: #f1f5f9; color: #1e293b; }
     .header-title { font-size: 1.6rem; color: #0f172a; margin: 0 0 15px 0; font-weight: 800; text-align: center; }
     
-    /* Navigasi Tab Babak */
     .tab-container { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px; justify-content: center; }
     .tab-btn { background: #cbd5e1; color: #334155; border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 0.95rem; transition: 0.3s; }
     .tab-btn.active { background: #2563eb; color: white; box-shadow: 0 4px 6px rgba(37, 99, 235, 0.3); transform: translateY(-2px); }
-    .tab-btn:hover:not(.active) { background: #94a3b8; }
-
-    /* Panel Petunjuk / Materi */
+    
     .materi-panel { background: #ffffff; border-left: 6px solid #2563eb; padding: 15px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
     .materi-panel h3 { margin: 0 0 10px 0; color: #1d4ed8; }
     .materi-text { font-size: 1rem; line-height: 1.6; color: #475569; }
 
-    /* Area Koding & Tombol */
-    #blocklyArea { height: 55vh; width: 100%; border: 2px solid #94a3b8; border-radius: 8px; background-color: #ffffff; }
-    .btn-action { width: 100%; padding: 15px; background-color: #10b981; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1.1rem; font-weight: bold; margin-top: 15px; text-transform: uppercase; transition: 0.2s; box-shadow: 0 4px 6px rgba(16, 185, 129, 0.3); }
-    .btn-action:hover { background-color: #059669; transform: translateY(-2px); }
+    /* Tombol Level Kasus */
+    .level-container { margin-top: 10px; display: none; gap: 8px; flex-wrap: wrap; }
+    .level-btn { background: #10b981; color: white; border: none; padding: 6px 12px; border-radius: 5px; cursor: pointer; font-size: 0.85rem; }
+    .level-btn:hover { background: #059669; }
+
+    #blocklyArea { height: 50vh; width: 100%; border: 2px solid #94a3b8; border-radius: 8px; background-color: #ffffff; }
+    .btn-action { width: 100%; padding: 15px; background-color: #f59e0b; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1.1rem; font-weight: bold; margin-top: 15px; text-transform: uppercase; transition: 0.2s; box-shadow: 0 4px 6px rgba(245, 158, 11, 0.3); }
+    .btn-action:hover { background-color: #d97706; transform: translateY(-2px); }
   </style>
 </head>
 <body>
@@ -39,127 +40,135 @@
     <button class="tab-btn active" onclick="gantiMateri('flowchart', this)">1. Flowchart (Berpikir Komputasional)</button>
     <button class="tab-btn" onclick="gantiMateri('literasi', this)">2. Literasi & Etika Digital</button>
     <button class="tab-btn" onclick="gantiMateri('koding', this)">3. Algoritma & Pemanfaatan IoT</button>
-    <button class="tab-btn" onclick="gantiMateri('data', this)">4. Analisis Data</button>
   </div>
 
   <div class="materi-panel" id="panelMateri">
-    <h3 id="judulMateri">Babak 1: Berpikir Komputasional (Flowchart)</h3>
+    <h3 id="judulMateri">Babak 1: Berpikir Komputasional (Kasus Sehari-hari)</h3>
     <div id="deskripsiMateri" class="materi-text">
-      <b>Tujuan:</b> Memahami alur logika sistem presensi kelas.<br>
-      <b>Instruksi:</b> Buka kategori <i>Simbol Flowchart Baku</i> di sebelah kiri. Buat urutan: <b>OVAL (Mulai)</b> &rarr; <b>JAJARGENJANG (Input: Baca Sidik Jari Siswa)</b> &rarr; <b>BELAH KETUPAT (Cek: Apakah data cocok?)</b>. Jika Ya: <b>PERSEGI (Catat Hadir)</b>. Jika Tidak: <b>PERSEGI (Bunyikan Alarm)</b> &rarr; <b>OVAL (Selesai)</b>.
+      <b>Pilih Level Tantangan di bawah ini:</b><br>
+      Siswa akan belajar merangkai logika aktivitas mereka sendiri menggunakan simbol baku.
+    </div>
+    <div class="level-container" id="levelFlowchart" style="display: flex;">
+      <button class="level-btn" onclick="setKasus(1)">Level 1: Dasar Lurus</button>
+      <button class="level-btn" onclick="setKasus(2)">Level 2: Satu Percabangan</button>
+      <button class="level-btn" onclick="setKasus(3)">Level 3: Logika Bersarang</button>
+      <button class="level-btn" onclick="setKasus(4)">Level 4: Deteksi Kesalahan</button>
     </div>
   </div>
   
   <div id="blocklyArea"></div>
   
-  <button class="btn-action" onclick="jalankanSimulasi()">▶ UJI COBA SIMULASI PROGRAM</button>
+  <button class="btn-action" onclick="jalankanSimulasi()">▶ UJI COBA ALUR LOGIKA</button>
 
   <xml id="toolbox" style="display: none">
-    
-    <category name="Simbol Flowchart Baku" colour="#ef4444">
+    <category name="Simbol Flowchart Kosong" colour="#ef4444">
       <block type="flow_mulai"></block>
-      <block type="flow_io"><field name="DATA">Baca Sidik Jari Siswa</field></block>
-      <block type="flow_io"><field name="DATA">Tampilkan 'Data Ditolak'</field></block>
-      <block type="flow_proses"><field name="AKSI">Catat Waktu Kehadiran</field></block>
-      <block type="flow_keputusan"><field name="KONDISI">Apakah Data Siswa Terdaftar?</field></block>
+      <block type="flow_io"></block>
+      <block type="flow_proses"></block>
+      <block type="flow_keputusan"></block>
       <block type="flow_selesai"></block>
     </category>
 
-    <category name="Kasus Literasi & Etika" colour="#8b5cf6">
-      <block type="flow_mulai"><field name="NAMA">Cek Pesan Masuk</field></block>
-      <block type="flow_keputusan"><field name="KONDISI">Apakah Tautan Mencurigakan / Hoaks?</field></block>
-      <block type="flow_proses"><field name="AKSI">Hapus Pesan & Lindungi Privasi</field></block>
-      <block type="flow_keputusan"><field name="KONDISI">Apakah Algoritma AI Mengandung Bias?</field></block>
-      <block type="flow_proses"><field name="AKSI">Tolak Keputusan AI, Gunakan Evaluasi Manusia</field></block>
-      <block type="flow_selesai"></block>
+    <category name="Blok Teks Cepat (Kasus Siswa)" colour="#3b82f6">
+      <block type="flow_io"><field name="DATA">Lihat Cuaca di Luar Jendela</field></block>
+      <block type="flow_keputusan"><field name="KONDISI">Apakah Hujan Turun?</field></block>
+      <block type="flow_proses"><field name="AKSI">Ambil Payung / Jas Hujan</field></block>
+      <block type="flow_proses"><field name="AKSI">Langsung Berangkat Sekolah</field></block>
+      <block type="flow_io"><field name="DATA">Cek Uang Saku di Dompet</field></block>
+      <block type="flow_keputusan"><field name="KONDISI">Apakah Uang Saku Cukup?</field></block>
+      <block type="flow_proses"><field name="AKSI">Bayar Jajanan di Kantin</field></block>
+      <block type="flow_proses"><field name="AKSI">Batal Beli / Cari Teman Untuk Pinjam</field></block>
     </category>
 
-    <category name="Algoritma & Pemrograman (IoT)" colour="#3b82f6">
-      <block type="flow_mulai"><field name="NAMA">Inisialisasi Sistem</field></block>
-      <block type="flow_io"><field name="DATA">Koneksikan Sensor ZA620_M5 ke Jaringan</field></block>
-      <block type="flow_proses"><field name="AKSI">Aktifkan Mikrokontroler (Wemos D1 / ESP32)</field></block>
-      <block type="flow_io"><field name="DATA">Kirim Data JSON ke Google Apps Script</field></block>
-      <block type="flow_selesai"></block>
+    <category name="Kasus Literasi & Etika AI" colour="#8b5cf6">
+      <block type="flow_keputusan"><field name="KONDISI">Apakah Pesan / Tautan Ini Hoaks?</field></block>
+      <block type="flow_proses"><field name="AKSI">Hapus Pesan & Blokir Pengirim</field></block>
+      <block type="flow_keputusan"><field name="KONDISI">Apakah AI Ini Memiliki Bias Data?</field></block>
+      <block type="flow_proses"><field name="AKSI">Gunakan Keputusan Etis Manusia</field></block>
     </category>
-
-    <category name="Analisis Data Sistem" colour="#0ea5e9">
-      <block type="flow_mulai"><field name="NAMA">Load Database</field></block>
-      <block type="flow_proses"><field name="AKSI">Hitung Total Penyimpanan (Kapasitas Maksimal: 300)</field></block>
+    
+    <category name="Algoritma & IoT" colour="#10b981">
+      <block type="flow_io"><field name="DATA">Sensor Mendeteksi Sidik Jari</field></block>
       <block type="flow_keputusan"><field name="KONDISI">Apakah Kapasitas Mencapai 300?</field></block>
-      <block type="flow_proses"><field name="AKSI">Bersihkan Cache / Arsipkan Data Lama</field></block>
-      <block type="flow_io"><field name="DATA">Tampilkan Grafik Tren Kehadiran Siswa</field></block>
-      <block type="flow_selesai"></block>
+      <block type="flow_proses"><field name="AKSI">Bunyikan Alarm Memori Penuh</field></block>
+      <block type="flow_io"><field name="DATA">Kirim Data Presensi ke Spreadsheet</field></block>
     </category>
-
   </xml>
 
   <script>
-    /* DEFINISI CUSTOM BLOCKS (FLOWCHART INTERAKTIF) */
+    /* DEFINISI BLOK FLOWCHART */
     Blockly.defineBlocksWithJsonArray([
-      { "type": "flow_mulai", "message0": "⬭ OVAL (Mulai) %1", "args0": [{"type": "field_input", "name": "NAMA", "text": "Program Dimulai"}], "nextStatement": null, "colour": 345 },
-      { "type": "flow_io", "message0": "▱ JAJARGENJANG (Input/Output) %1", "args0": [{"type": "field_input", "name": "DATA", "text": "Baca / Tulis..."}], "previousStatement": null, "nextStatement": null, "colour": 280 },
-      { "type": "flow_proses", "message0": "▭ PERSEGI (Proses) %1", "args0": [{"type": "field_input", "name": "AKSI", "text": "Eksekusi Aksi..."}], "previousStatement": null, "nextStatement": null, "colour": 210 },
-      { "type": "flow_keputusan", "message0": "⬦ BELAH KETUPAT (Keputusan) %1 Cek: %2 %3 ↳ Jika YA: %4 ↳ Jika TIDAK: %5", "args0": [ {"type": "input_dummy"}, {"type": "field_input", "name": "KONDISI", "text": "Kondisi Benar/Salah?"}, {"type": "input_dummy"}, {"type": "input_statement", "name": "DO_YA"}, {"type": "input_statement", "name": "DO_TIDAK"} ], "previousStatement": null, "nextStatement": null, "colour": 45 },
+      { "type": "flow_mulai", "message0": "⬭ OVAL (Mulai) %1", "args0": [{"type": "field_input", "name": "NAMA", "text": "Mulai"}], "nextStatement": null, "colour": 345 },
+      { "type": "flow_io", "message0": "▱ JAJARGENJANG (I/O) %1", "args0": [{"type": "field_input", "name": "DATA", "text": "Ketik Input/Output..."}], "previousStatement": null, "nextStatement": null, "colour": 280 },
+      { "type": "flow_proses", "message0": "▭ PERSEGI (Proses) %1", "args0": [{"type": "field_input", "name": "AKSI", "text": "Ketik Aktivitas..."}], "previousStatement": null, "nextStatement": null, "colour": 210 },
+      { "type": "flow_keputusan", "message0": "⬦ BELAH KETUPAT (Keputusan) %1 Cek: %2 %3 ↳ Jika YA: %4 ↳ Jika TIDAK: %5", "args0": [ {"type": "input_dummy"}, {"type": "field_input", "name": "KONDISI", "text": "Kondisi Ya/Tidak?"}, {"type": "input_dummy"}, {"type": "input_statement", "name": "DO_YA"}, {"type": "input_statement", "name": "DO_TIDAK"} ], "previousStatement": null, "nextStatement": null, "colour": 45 },
       { "type": "flow_selesai", "message0": "⬭ OVAL (Selesai)", "previousStatement": null, "colour": 345 }
     ]);
 
-    /* GENERATOR KODE JAVASCRIPT */
+    /* GENERATOR JAVASCRIPT */
     Blockly.JavaScript['flow_mulai'] = function(block) { return "alert('🟢 MULAI: " + block.getFieldValue('NAMA') + "');\n"; };
     Blockly.JavaScript['flow_io'] = function(block) { return "alert('🟪 I/O: " + block.getFieldValue('DATA') + "');\n"; };
     Blockly.JavaScript['flow_proses'] = function(block) { return "alert('🟦 PROSES: " + block.getFieldValue('AKSI') + "');\n"; };
-    Blockly.JavaScript['flow_selesai'] = function(block) { return "alert('🔴 SELESAI: Program Berhenti.');\n"; };
+    Blockly.JavaScript['flow_selesai'] = function(block) { return "alert('🔴 SELESAI: Aktivitas Berakhir.');\n"; };
     Blockly.JavaScript['flow_keputusan'] = function(block) {
       var kondisi = block.getFieldValue('KONDISI');
-      var cab_ya = Blockly.JavaScript.statementToCode(block, 'DO_YA') || "alert('Cabang YA kosong.');\n";
-      var cab_tidak = Blockly.JavaScript.statementToCode(block, 'DO_TIDAK') || "alert('Cabang TIDAK kosong.');\n";
-      return "if (confirm('🔸 BELAH KETUPAT (Keputusan): \\n" + kondisi + "\\n\\n[OK] = Ya | [Cancel] = Tidak')) {\n" + cab_ya + "} else {\n" + cab_tidak + "}\n";
+      var cab_ya = Blockly.JavaScript.statementToCode(block, 'DO_YA') || "alert('Cabang YA belum diisi!');\n";
+      var cab_tidak = Blockly.JavaScript.statementToCode(block, 'DO_TIDAK') || "alert('Cabang TIDAK belum diisi!');\n";
+      return "if (confirm('🔸 KEPUTUSAN: \\n" + kondisi + "\\n\\n[OK] = Ya | [Cancel] = Tidak')) {\n" + cab_ya + "} else {\n" + cab_tidak + "}\n";
     };
 
-    /* INISIALISASI WORKSPACE */
     var workspace = Blockly.inject('blocklyArea', {
       toolbox: document.getElementById('toolbox'), trashcan: true,
-      zoom: { controls: true, wheel: false, startScale: 1.1, maxScale: 3, minScale: 0.5, scaleSpeed: 1.2 },
-      move: { scrollbars: true, drag: true, wheel: false }
+      zoom: { controls: true, wheel: false, startScale: 1.1, maxScale: 3, minScale: 0.5 }
     });
 
-    /* FUNGSI NAVIGASI MATERI DINAMIS */
+    /* FUNGSI NAVIGASI MATERI */
     function gantiMateri(materi, btn) {
-      // Ubah warna tombol
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
       const judul = document.getElementById('judulMateri');
       const deskripsi = document.getElementById('deskripsiMateri');
+      const levelContainer = document.getElementById('levelFlowchart');
 
       if (materi === 'flowchart') {
         judul.innerText = "Babak 1: Berpikir Komputasional (Flowchart)";
-        deskripsi.innerHTML = "<b>Tujuan:</b> Memahami alur logika sistem kelas.<br><b>Instruksi:</b> Buka kategori <i>Simbol Flowchart Baku</i>. Buat urutan: <b>OVAL (Mulai)</b> &rarr; <b>JAJARGENJANG (Input: Baca Sidik Jari Siswa)</b> &rarr; <b>BELAH KETUPAT (Cek: Apakah data cocok?)</b>. Jika Ya: <b>PERSEGI (Catat Waktu)</b>. Jika Tidak: <b>JAJARGENJANG (Tampilkan 'Data Ditolak')</b> &rarr; <b>OVAL (Selesai)</b>.";
-      } else if (materi === 'literasi') {
-        judul.innerText = "Babak 2: Literasi Digital & Etika Kecerdasan Artifisial";
-        deskripsi.innerHTML = "<b>Tujuan:</b> Melatih pengambilan keputusan etis dan keamanan siber.<br><b>Instruksi:</b> Buka kategori <i>Kasus Literasi & Etika</i>. Susun logika di mana jika belah ketupat mendeteksi <b>Tautan Mencurigakan</b>, maka proses harus mengeksekusi <b>Hapus Pesan & Lindungi Privasi</b>. Hal yang sama berlaku jika menemukan Bias AI.";
-      } else if (materi === 'koding') {
-        judul.innerText = "Babak 3: Algoritma & Pemanfaatan IoT";
-        deskripsi.innerHTML = "<b>Tujuan:</b> Mensimulasikan arsitektur sistem jaringan nyata tingkat SMK/Lanjut.<br><b>Instruksi:</b> Buka kategori <i>Algoritma & Pemrograman (IoT)</i>. Rangkai alur mulai dari menginisialisasi sistem perangkat keras, mengaktifkan mikrokontroler, hingga mengirimkan data JSON ke skrip <i>cloud</i>.";
-      } else if (materi === 'data') {
-        judul.innerText = "Babak 4: Analisis Data & Optimasi Sistem";
-        deskripsi.innerHTML = "<b>Tujuan:</b> Mengevaluasi batas kemampuan komputasi dan menyajikan informasi.<br><b>Instruksi:</b> Buka kategori <i>Analisis Data Sistem</i>. Susun alur untuk menghitung kapasitas penyimpanan. Gunakan <b>BELAH KETUPAT</b> untuk memeriksa kapasitas 300, lalu arsipkan data lama, dan keluarkan <b>OUTPUT</b> berupa Grafik Tren Kehadiran Siswa.";
+        deskripsi.innerHTML = "<b>Pilih Level Tantangan di bawah ini:</b><br>Siswa akan belajar merangkai logika aktivitas mereka sendiri menggunakan simbol baku.";
+        levelContainer.style.display = "flex";
+      } else {
+        levelContainer.style.display = "none";
+        if (materi === 'literasi') {
+          judul.innerText = "Babak 2: Literasi Digital & Etika";
+          deskripsi.innerHTML = "<b>Misi:</b> Susun logika pencegahan. Gunakan <b>BELAH KETUPAT</b> untuk mendeteksi Hoaks atau Bias AI, lalu arahkan cabang 'YA' ke <b>PERSEGI</b> untuk mengambil tindakan pengamanan.";
+        } else if (materi === 'koding') {
+          judul.innerText = "Babak 3: Algoritma & Pemanfaatan IoT";
+          deskripsi.innerHTML = "<b>Misi:</b> Rancang sistem kelas. Gunakan <b>JAJARGENJANG</b> untuk membaca sensor perangkat keras, lalu gunakan percabangan untuk memeriksa status data.";
+        }
       }
-      
-      // Mengosongkan kanvas agar peserta fokus pada misi baru
       workspace.clear();
     }
 
-    /* FUNGSI EKSEKUSI */
+    /* FUNGSI SET KASUS (LEVEL 1-4) */
+    function setKasus(level) {
+      const deskripsi = document.getElementById('deskripsiMateri');
+      if(level === 1) {
+        deskripsi.innerHTML = "<b>Level 1 (Dasar): Meminjam Buku di Perpustakaan.</b><br>Gunakan urutan lurus tanpa cabang: <br><i>Mulai &rarr; I/O: Serahkan Buku &rarr; Proses: Pustakawan memindai Barcode &rarr; Selesai.</i>";
+      } else if (level === 2) {
+        deskripsi.innerHTML = "<b>Level 2 (Percabangan): Berangkat Sekolah Musim Hujan.</b><br><i>Mulai &rarr; I/O: Cek Cuaca &rarr; KEPUTUSAN: Apakah Hujan?</i><br>↳ <b>Ya:</b> Proses: Pakai Jas Hujan<br>↳ <b>Tidak:</b> Proses: Langsung Berangkat<br><i>&rarr; Selesai.</i>";
+      } else if (level === 3) {
+        deskripsi.innerHTML = "<b>Level 3 (Logika Kompleks): Membeli Jajan di Kantin.</b><br><i>Mulai &rarr; I/O: Pilih Jajan &rarr; KEPUTUSAN: Apakah Uang Saku Cukup?</i><br>↳ <b>Ya:</b> Proses: Bayar dan Makan<br>↳ <b>Tidak:</b> KEPUTUSAN BARU: Apakah Boleh Kasbon?<br>&rarr; Susun sisa alurnya sesuai kreativitasmu &rarr; <i>Selesai.</i>";
+      } else if (level === 4) {
+        deskripsi.innerHTML = "<b>Level 4 (Deteksi Kesalahan): Lupa Bawa PR.</b><br>Coba susun sendiri! Apa yang terjadi jika guru menanyakan PR Matematika, dan kamu mengecek tas ternyata buku tertinggal? Susun percabangan penyelesaian masalah ini dari <i>Mulai</i> sampai <i>Selesai</i>.";
+      }
+      workspace.clear();
+    }
+
     function jalankanSimulasi() {
       var code = Blockly.JavaScript.workspaceToCode(workspace);
       if (code) {
-          try {
-              alert("🚀 MEMULAI EKSEKUSI SIMULASI:\n\nIkuti jendela pop-up untuk melihat hasil logika yang Anda susun.");
-              eval(code);
-              alert("✅ Simulasi Selesai! Instruksi berhasil dibaca oleh mesin.");
-          } catch (e) { alert("Error pada susunan: " + e); }
+          try { eval(code); } catch (e) { alert("Error: " + e); }
       } else {
-          alert("Kanvas masih kosong! Silakan baca instruksi di panel atas lalu tarik blok ke area putih.");
+          alert("Kanvas kosong! Tarik simbol dari menu sebelah kiri.");
       }
     }
   </script>
