@@ -3,138 +3,156 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Workshop Koding & KA - Misi Konseptual</title>
+  <title>Koding & KA Play - Presisi Simbol</title>
   
-  <!-- Memuat Google Blockly Engine -->
   <script src="https://unpkg.com/blockly/blockly_compressed.js"></script>
   <script src="https://unpkg.com/blockly/blocks_compressed.js"></script>
   <script src="https://unpkg.com/blockly/javascript_compressed.js"></script>
   <script src="https://unpkg.com/blockly/msg/id.js"></script>
   
   <style>
-    body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; margin: 0; padding: 15px; background-color: #f1f5f9; color: #1e293b; }
-    .header-title { font-size: 1.6rem; color: #0f172a; margin: 0 0 10px 0; }
-    
-    /* Panel Petunjuk Interaktif (Misi) */
-    .mission-panel { background: #fff; border-left: 6px solid #3b82f6; padding: 15px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-    .mission-panel h3 { margin: 0 0 10px 0; color: #1d4ed8; font-size: 1.2rem; }
-    .mission-text { font-size: 1rem; line-height: 1.6; margin-bottom: 15px; background: #f8fafc; padding: 10px; border-radius: 5px; }
-    
-    .btn-group { display: flex; flex-wrap: wrap; gap: 8px; }
-    .btn-mission { background: #3b82f6; color: white; border: none; padding: 10px 15px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-weight: bold; transition: background 0.2s; }
-    .btn-mission:hover { background: #2563eb; }
-    .btn-mission.fase-d { background: #10b981; } .btn-mission.fase-d:hover { background: #059669; }
-    .btn-mission.fase-e { background: #8b5cf6; } .btn-mission.fase-e:hover { background: #7c3aed; }
-
-    #blocklyArea { height: 55vh; width: 100%; border: 2px solid #cbd5e1; border-radius: 8px; background-color: #ffffff; }
-    
-    .btn-action { width: 100%; padding: 15px; background-color: #f59e0b; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1.1rem; font-weight: bold; margin-top: 15px; text-transform: uppercase; box-shadow: 0 4px 6px rgba(245, 158, 11, 0.3); transition: transform 0.1s; }
-    .btn-action:hover { background-color: #d97706; transform: translateY(-2px); }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; margin: 0; padding: 15px; background-color: #f8fafc; color: #1e293b; }
+    .header-title { font-size: 1.5rem; color: #0f172a; margin: 0 0 10px 0; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; }
+    .mission-panel { background: #fff; border-left: 6px solid #10b981; padding: 15px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+    .mission-text { font-size: 0.95rem; line-height: 1.6; color: #334155; }
+    #blocklyArea { height: 60vh; width: 100%; border: 2px solid #cbd5e1; border-radius: 8px; background-color: #ffffff; }
+    .btn-action { width: 100%; padding: 15px; background-color: #3b82f6; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1.1rem; font-weight: bold; margin-top: 15px; transition: 0.2s; }
+    .btn-action:hover { background-color: #2563eb; box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3); }
   </style>
 </head>
 <body>
 
-  <h1 class="header-title">🧩 Koding & KA Play: Papan Logika & Flowchart</h1>
+  <h1 class="header-title">🔣 Papan Logika Berbasis Simbol Baku Informatika</h1>
 
-  <!-- Panel Misi Kasus -->
   <div class="mission-panel">
-    <h3 id="mission-title">Pilih Kasus Pembelajaran di Bawah Ini:</h3>
-    <div id="mission-desc" class="mission-text">
-      Pilih kasus berdasarkan elemen kurikulum. Anda akan menyusun <b>Flowchart</b> atau <b>Peta Konsep</b> (bukan sekadar koding) untuk menyelesaikan masalah dunia nyata.
-    </div>
-    <div class="btn-group">
-      <button class="btn-mission fase-d" onclick="setMission('faseD1')">Fase D: Flowchart (Berpikir Komputasional)</button>
-      <button class="btn-mission fase-d" onclick="setMission('faseD2')">Fase D: Keamanan (Literasi Digital)</button>
-      <button class="btn-mission fase-d" onclick="setMission('faseD3')">Fase D: Etika Bias (Kecerdasan Artifisial)</button>
-      <button class="btn-mission fase-e" onclick="setMission('faseE1')">Fase E/F: Analisis Data Sensor</button>
-      <button class="btn-mission fase-e" onclick="setMission('faseE2')">Fase E/F: Algoritma & Pemanfaatan AI IoT</button>
+    <div class="mission-text">
+      <b>Petunjuk untuk Guru:</b> Aplikasi ini mewajibkan penggunaan simbol yang tepat. <br>
+      • <b>OVAL</b> untuk Awalan/Akhiran.<br>
+      • <b>JAJARGENJANG</b> untuk menerima data masukan atau hasil.<br>
+      • <b>PERSEGI PANJANG</b> untuk proses komputasi/aksi.<br>
+      • <b>BELAH KETUPAT</b> untuk penyeleksian kondisi (Bercabang Ya/Tidak).
     </div>
   </div>
   
-  <!-- Area Blockly -->
   <div id="blocklyArea"></div>
   
-  <button class="btn-action" onclick="jalankanSimulasi()">▶ UJI SOLUSI KASUS</button>
+  <button class="btn-action" onclick="jalankanSimulasi()">▶ JALANKAN FLOWCHART & LOGIKA</button>
 
-  <!-- STRUKTUR TOOLBOX -->
   <xml id="toolbox" style="display: none">
-    <category name="1. Blok Flowchart" colour="#2563eb">
+    <category name="1. Simbol Flowchart" colour="#ef4444">
       <block type="flow_mulai"></block>
       <block type="flow_io"></block>
       <block type="flow_proses"></block>
+      <block type="flow_keputusan"></block>
       <block type="flow_selesai"></block>
     </category>
 
-    <category name="2. Percabangan (Logika)" colour="#eab308">
-      <block type="controls_if"></block>
+    <category name="2. Elemen Literasi Digital" colour="#10b981">
+      <block type="flow_keputusan">
+        <field name="KONDISI">Pesan Mengandung Tautan Mencurigakan</field>
+      </block>
+      <block type="flow_proses"><field name="AKSI">Blokir Nomor & Hapus Pesan</field></block>
+      <block type="flow_proses"><field name="AKSI">Verifikasi Informasi ke Sumber Resmi</field></block>
     </category>
 
-    <category name="3. Konsep Literasi Digital" colour="#10b981">
-      <block type="litdig_cek"></block>
-      <block type="flow_proses"><field name="AKSI">Blokir Pengirim & Hapus Pesan</field></block>
-      <block type="flow_proses"><field name="AKSI">Buka Tautan dengan Aman</field></block>
+    <category name="3. Elemen Etika KA (AI)" colour="#8b5cf6">
+      <block type="flow_keputusan">
+        <field name="KONDISI">Hasil AI Menunjukkan Bias Data</field>
+      </block>
+      <block type="flow_proses"><field name="AKSI">Tolak Keputusan AI (Gunakan Keputusan Manusia)</field></block>
+      <block type="flow_proses"><field name="AKSI">Implementasikan Hasil Analisis AI</field></block>
     </category>
 
-    <category name="4. Etika & Pemanfaatan KA" colour="#8b5cf6">
-      <block type="etika_ai_cek"></block>
-      <block type="flow_proses"><field name="AKSI">Tolak Hasil AI: Lakukan Audit Manusia</field></block>
-      <block type="flow_proses"><field name="AKSI">Terima Hasil AI: Proses Lanjutan</field></block>
-      <block type="ai_generate"></block>
-    </category>
-
-    <category name="5. Analisis Data & Algoritma" colour="#06b6d4">
-      <block type="data_olah"></block>
-      <block type="controls_repeat_ext"><value name="TIMES"><shadow type="math_number"><field name="NUM">10</field></shadow></value></block>
-      <block type="flow_proses"><field name="AKSI">Kirim Data ke Dashboard Sekolah</field></block>
+    <category name="4. Analisis Data & Sistem" colour="#0ea5e9">
+      <block type="flow_io"><field name="DATA">Baca Sensor Sidik Jari ZA620_M5</field></block>
+      <block type="flow_proses"><field name="AKSI">Hitung Kapasitas Tersisa (Max 300)</field></block>
+      <block type="flow_io"><field name="DATA">Tampilkan Status di Dashboard</field></block>
     </category>
   </xml>
 
   <script>
     /* =====================================================================
-       1. DEFINISI BLOK KUSTOM (FLOWCHART & KONSEPTUAL)
+       1. DEFINISI BLOK KUSTOM (PRESISI BENTUK & FUNGSI)
        ===================================================================== */
     Blockly.defineBlocksWithJsonArray([
-      // Blok Flowchart: Mulai (Oval)
-      { "type": "flow_mulai", "message0": "MULAI (Oval) %1", "args0": [{"type": "field_input", "name": "NAMA", "text": "Sistem Aktif"}], "nextStatement": null, "colour": 120, "tooltip": "Simbol Terminator Awal" },
-      // Blok Flowchart: Proses (Persegi)
-      { "type": "flow_proses", "message0": "PROSES (Persegi) %1", "args0": [{"type": "field_input", "name": "AKSI", "text": "Lakukan sesuatu..."}], "previousStatement": null, "nextStatement": null, "colour": 230, "tooltip": "Simbol Proses/Aksi" },
-      // Blok Flowchart: Input/Output (Jajar Genjang)
-      { "type": "flow_io", "message0": "INPUT/OUTPUT (Jajar Genjang) %1", "args0": [{"type": "field_input", "name": "DATA", "text": "Baca Data..."}], "previousStatement": null, "nextStatement": null, "colour": 280, "tooltip": "Simbol Input atau Output" },
-      // Blok Flowchart: Selesai (Oval)
-      { "type": "flow_selesai", "message0": "SELESAI (Oval)", "previousStatement": null, "colour": 0, "tooltip": "Simbol Terminator Akhir" },
-
-      // Blok Literasi Digital (Output Boolean untuk blok IF)
-      { "type": "litdig_cek", "message0": "Cek Literasi: %1", "args0": [{"type": "field_dropdown", "name": "KONDISI", "options": [["Pesan Mengandung Hoaks/Phishing", "HOAKS"], ["Pesan dari Sumber Resmi", "VALID"]]}], "output": "Boolean", "colour": 160 },
-      
-      // Blok Etika KA
-      { "type": "etika_ai_cek", "message0": "Evaluasi Etika AI: %1", "args0": [{"type": "field_dropdown", "name": "KONDISI", "options": [["Sistem AI Menunjukkan Bias Gender/Ras", "BIAS"], ["Keputusan AI Adil dan Objektif", "FAIR"]]}], "output": "Boolean", "colour": 260 },
-      { "type": "ai_generate", "message0": "AI Generate: %1", "args0": [{"type": "field_input", "name": "PROMPT", "text": "Buat teks ringkasan"}], "previousStatement": null, "nextStatement": null, "colour": 260 },
-
-      // Blok Analisis Data
-      { "type": "data_olah", "message0": "Analisis Data: %1", "args0": [{"type": "field_dropdown", "name": "OP", "options": [["Hitung Rata-Rata Nilai Siswa", "AVG"], ["Cari Data Sensor Tertinggi", "MAX"], ["Visualisasikan ke Grafik", "CHART"]]}], "previousStatement": null, "nextStatement": null, "colour": 190 }
+      // 1. OVAL (Terminator - Mulai)
+      { 
+        "type": "flow_mulai", 
+        "message0": "⬭ OVAL (Mulai) %1", 
+        "args0": [{"type": "field_input", "name": "NAMA", "text": "Program Berjalan"}], 
+        "nextStatement": null, 
+        "colour": 345, 
+        "tooltip": "Simbol Terminator: Titik awal program." 
+      },
+      // 2. JAJARGENJANG (Input / Output)
+      { 
+        "type": "flow_io", 
+        "message0": "▱ JAJARGENJANG (Input/Output) %1", 
+        "args0": [{"type": "field_input", "name": "DATA", "text": "Baca Data..."}], 
+        "previousStatement": null, 
+        "nextStatement": null, 
+        "colour": 280, 
+        "tooltip": "Simbol Input/Output: Untuk menerima atau menampilkan data." 
+      },
+      // 3. PERSEGI PANJANG (Proses)
+      { 
+        "type": "flow_proses", 
+        "message0": "▭ PERSEGI PANJANG (Proses) %1", 
+        "args0": [{"type": "field_input", "name": "AKSI", "text": "Lakukan aksi..."}], 
+        "previousStatement": null, 
+        "nextStatement": null, 
+        "colour": 210, 
+        "tooltip": "Simbol Proses: Untuk operasi atau eksekusi." 
+      },
+      // 4. BELAH KETUPAT (Keputusan / Decision) - Dibuat Bercabang!
+      { 
+        "type": "flow_keputusan", 
+        "message0": "⬦ BELAH KETUPAT (Keputusan) %1 Cek: %2 %3 ↳ Jika YA: %4 ↳ Jika TIDAK: %5", 
+        "args0": [
+          {"type": "input_dummy"},
+          {"type": "field_input", "name": "KONDISI", "text": "Apakah kondisi ini benar?"},
+          {"type": "input_dummy"},
+          {"type": "input_statement", "name": "DO_YA"},
+          {"type": "input_statement", "name": "DO_TIDAK"}
+        ], 
+        "previousStatement": null, 
+        "nextStatement": null, 
+        "colour": 45, 
+        "tooltip": "Simbol Decision: Menentukan arah alur berdasarkan kondisi YA atau TIDAK." 
+      },
+      // 5. OVAL (Terminator - Selesai)
+      { 
+        "type": "flow_selesai", 
+        "message0": "⬭ OVAL (Selesai)", 
+        "previousStatement": null, 
+        "colour": 345, 
+        "tooltip": "Simbol Terminator: Titik akhir program." 
+      }
     ]);
 
     /* =====================================================================
-       2. GENERATOR KODE JAVASCRIPT (Mengubah blok menjadi urutan Pop-Up)
+       2. GENERATOR KODE JAVASCRIPT (Mengubah blok menjadi eksekusi nyata)
        ===================================================================== */
     Blockly.JavaScript['flow_mulai'] = function(block) { return "alert('🟢 MULAI: " + block.getFieldValue('NAMA') + "');\n"; };
-    Blockly.JavaScript['flow_proses'] = function(block) { return "alert('🟦 PROSES: " + block.getFieldValue('AKSI') + "');\n"; };
     Blockly.JavaScript['flow_io'] = function(block) { return "alert('🟪 I/O: " + block.getFieldValue('DATA') + "');\n"; };
-    Blockly.JavaScript['flow_selesai'] = function(block) { return "alert('🔴 SELESAI Program Berhenti.');\n"; };
+    Blockly.JavaScript['flow_proses'] = function(block) { return "alert('🟦 PROSES: " + block.getFieldValue('AKSI') + "');\n"; };
+    Blockly.JavaScript['flow_selesai'] = function(block) { return "alert('🔴 SELESAI: Program Berhenti.');\n"; };
     
-    Blockly.JavaScript['litdig_cek'] = function(block) { 
-      var val = block.getFieldValue('KONDISI') === 'HOAKS' ? 'true' : 'false';
-      return [val, Blockly.JavaScript.ORDER_ATOMIC]; 
+    // Generator Belah Ketupat (Sangat Interaktif menggunakan window.confirm)
+    Blockly.JavaScript['flow_keputusan'] = function(block) {
+      var kondisi = block.getFieldValue('KONDISI');
+      var cab_ya = Blockly.JavaScript.statementToCode(block, 'DO_YA');
+      var cab_tidak = Blockly.JavaScript.statementToCode(block, 'DO_TIDAK');
+      
+      // Jika kosong, berikan feedback agar program tidak diam
+      if(!cab_ya) cab_ya = "alert('Cabang YA kosong.');\n";
+      if(!cab_tidak) cab_tidak = "alert('Cabang TIDAK kosong.');\n";
+
+      return "if (confirm('🔸 BELAH KETUPAT (Keputusan): \\n" + kondisi + "\\n\\n[OK] = Ya | [Cancel] = Tidak')) {\n" + cab_ya + "} else {\n" + cab_tidak + "}\n";
     };
-    Blockly.JavaScript['etika_ai_cek'] = function(block) { 
-      var val = block.getFieldValue('KONDISI') === 'BIAS' ? 'true' : 'false';
-      return [val, Blockly.JavaScript.ORDER_ATOMIC]; 
-    };
-    Blockly.JavaScript['ai_generate'] = function(block) { return "alert('🤖 KECERDASAN ARTIFISIAL memproses: " + block.getFieldValue('PROMPT') + "');\n"; };
-    Blockly.JavaScript['data_olah'] = function(block) { return "alert('📊 ANALISIS DATA: Menjalankan fungsi " + block.getFieldValue('OP') + "');\n"; };
 
     /* =====================================================================
-       3. INISIALISASI & INTERAKSI HALAMAN
+       3. INISIALISASI WORKSPACE
        ===================================================================== */
     var workspace = Blockly.inject('blocklyArea', {
       toolbox: document.getElementById('toolbox'), trashcan: true,
@@ -142,41 +160,16 @@
       move: { scrollbars: true, drag: true, wheel: false }
     });
 
-    // Fungsi Ganti Kasus (Misi)
-    function setMission(missionId) {
-      const titleEl = document.getElementById('mission-title');
-      const descEl = document.getElementById('mission-desc');
-      
-      if (missionId === 'faseD1') {
-        titleEl.innerText = "KASUS FASE D: Membuat Flowchart Pembuat Kopi Otomatis";
-        descEl.innerHTML = "<b>Elemen Berpikir Komputasional:</b> Tarik blok dari menu <i>1. Blok Flowchart</i>. Susun urutan yang benar dari <b>MULAI</b> &rarr; <b>INPUT</b> (Masukkan Air) &rarr; <b>PROSES</b> (Seduh) &rarr; <b>SELESAI</b>.";
-      } else if (missionId === 'faseD2') {
-        titleEl.innerText = "KASUS FASE D: Simulasi Filter Keamanan Data";
-        descEl.innerHTML = "<b>Elemen Literasi Digital:</b> Gunakan blok <i>Jika-Lakukan</i>. Masukkan blok <b>Cek Literasi: Pesan Mengandung Hoaks</b>. Jika ya, pasang blok proses <b>Blokir Pengirim & Hapus Pesan</b>.";
-      } else if (missionId === 'faseD3') {
-        titleEl.innerText = "KASUS FASE D: Audit Keadilan AI";
-        descEl.innerHTML = "<b>Elemen Etika Kecerdasan Artifisial:</b> Sebuah AI penyortir beasiswa mendiskriminasi gender tertentu. Buat logika: <b>JIKA</b> <i>Sistem AI Menunjukkan Bias</i>, <b>MAKA</b> <i>Tolak Hasil AI: Lakukan Audit Manusia</i>.";
-      } else if (missionId === 'faseE1') {
-        titleEl.innerText = "KASUS FASE E/F: Analisis Data Cuaca Pintar";
-        descEl.innerHTML = "<b>Elemen Analisis Data:</b> Gunakan blok <b>Analisis Data: Hitung Rata-Rata</b>, kemudian gabungkan dengan blok proses <b>Kirim Data ke Dashboard Sekolah</b>.";
-      } else if (missionId === 'faseE2') {
-        titleEl.innerText = "KASUS FASE E/F: Eksekusi Algoritma Pemanfaatan AI";
-        descEl.innerHTML = "<b>Elemen Pemanfaatan KA & Pemrograman:</b> Mulai dengan blok <b>MULAI</b>. Lalu gunakan blok <b>AI Generate</b> untuk menyuruh AI merangkum data, diakhiri dengan proses pengiriman data.";
-      }
-      workspace.clear();
-    }
-
-    // Fungsi Uji Solusi (Eksekusi Blok ke Alert)
+    // Fungsi Eksekusi
     function jalankanSimulasi() {
       var code = Blockly.JavaScript.workspaceToCode(workspace);
       if (code) {
           try {
-              alert("🚀 MEMULAI UJI SOLUSI KASUS:\n-----------------------------\nKlik OK untuk melihat urutan proses yang berjalan.");
+              alert("🚀 MEMULAI EKSEKUSI ALUR LOGIKA:\n\nIkuti jendela pop-up untuk melihat hasil desain Anda.");
               eval(code);
-              alert("✅ Selesai! Semua instruksi dalam Flowchart/Peta Konsep Anda telah tereksekusi.");
           } catch (e) { alert("Error pada susunan: " + e); }
       } else {
-          alert("Papan masih kosong! Pilih kasus di atas lalu tarik blok ke kanvas.");
+          alert("Kanvas kosong! Susun blok diagram alir Anda terlebih dahulu.");
       }
     }
   </script>
