@@ -236,20 +236,22 @@
       <h3>📚 Materi Dasar: Pemrograman Visual (Koding Blok)</h3>
       <div class="materi-content">
         <p><b>Koding Blok</b> mempermudah kita merakit program logika mesin menggunakan kepingan blok <i>puzzle</i> visual, sehingga kita bisa fokus pada Algoritma tanpa pusing menghafal sintaks bahasa pemrograman (*syntax error*).</p>
-        <p><b>Pemanfaatan Blok dalam Sistem Cerdas:</b></p>
+        <p><b>Struktur Utama pada Blok Pembelajaran Kita:</b></p>
         <ul>
-          <li><b>Variabel:</b> Sebagai "Wadah" untuk menyimpan data sensor (misal kapasitas sidik jari = 300).</li>
-          <li><b>Logika Kondisi (JIKA/IF):</b> Menjadi "Otak" sistem IoT. (Misal: <i>JIKA</i> kapasitas penuh, <i>MAKA</i> kirim peringatan).</li>
-          <li><b>Perulangan (Loop):</b> Mengotomatisasi instruksi mesin agar bekerja mandiri secara terus-menerus.</li>
+          <li><b>Variabel:</b> Sebagai "Wadah" untuk menyimpan data yang bisa berubah (contoh: Menyimpan Skor = 100).</li>
+          <li><b>Logika Kondisi (JIKA/IF):</b> Menjadi "Otak" sistem untuk mengambil keputusan (Misal: <i>JIKA</i> kapasitas penuh, <i>MAKA</i> lapor).</li>
+          <li><b>Perulangan (Loop):</b> Mengotomatisasi instruksi mesin agar bekerja berulang kali secara efisien.</li>
         </ul>
       </div>
     </div>
 
     <div class="level-nav">
-      <button class="lvl-btn active" onclick="setKodingLvl(1, this)">Lv 1: Variabel Data</button>
-      <button class="lvl-btn" onclick="setKodingLvl(2, this)">Lv 2: Logika Kondisi (IF)</button>
-      <button class="lvl-btn" onclick="setKodingLvl(3, this)">Lv 3: Perulangan (Loop)</button>
-      <button class="lvl-btn" onclick="setKodingLvl(4, this)">Lv 4: Simulasi Sensor IoT</button>
+      <button class="lvl-btn active" onclick="setKodingLvl(1, this)">Lv 1: Hello World</button>
+      <button class="lvl-btn" onclick="setKodingLvl(2, this)">Lv 2: Variabel</button>
+      <button class="lvl-btn" onclick="setKodingLvl(3, this)">Lv 3: Logika IF</button>
+      <button class="lvl-btn" onclick="setKodingLvl(4, this)">Lv 4: Perulangan</button>
+      <button class="lvl-btn" onclick="setKodingLvl(5, this)">Lv 5: Logika Ganda (AND/OR)</button>
+      <button class="lvl-btn" onclick="setKodingLvl(6, this)">Lv 6: Sensor IoT Cerdas</button>
     </div>
 
     <div class="materi-box" id="kd-materi"></div>
@@ -277,34 +279,37 @@
     </div>
 
     <xml id="toolbox" style="display: none">
-      <category name="Logika & Kondisi" colour="#2196F3">
+      <category name="1. Aksi (Output)" colour="#5b67a5">
+        <block type="text_print"></block>
+      </category>
+      <category name="2. Teks & Data" colour="#FFEB3B">
+        <block type="text"><field name="TEXT">Halo Informatika!</field></block>
+        <block type="text"><field name="TEXT">Lulus</field></block>
+        <block type="text"><field name="TEXT">Bunyikan Alarm!</field></block>
+        <block type="text"><field name="TEXT">Akses Diterima</field></block>
+        <block type="text"><field name="TEXT">Bahaya! Suhu Panas</field></block>
+      </category>
+      <category name="3. Variabel & Angka" colour="#9C27B0">
+        <block type="variables_set"><field name="VAR" id="var_nilai">nilai</field></block>
+        <block type="variables_get"><field name="VAR" id="var_nilai">nilai</field></block>
+        <block type="math_number"><field name="NUM">100</field></block>
+        <block type="math_number"><field name="NUM">40</field></block>
+      </category>
+      <category name="4. Logika (IF & Cek)" colour="#2196F3">
         <block type="controls_if"></block>
         <block type="logic_compare"></block>
         <block type="logic_operation"></block>
         <block type="logic_boolean"></block>
       </category>
-      <category name="Perulangan (Loop)" colour="#4CAF50">
+      <category name="5. Perulangan (Loop)" colour="#4CAF50">
         <block type="controls_repeat_ext">
           <value name="TIMES"><shadow type="math_number"><field name="NUM">3</field></shadow></value>
         </block>
       </category>
-      <category name="Matematika" colour="#9C27B0">
-        <block type="math_number"><field name="NUM">100</field></block>
-        <block type="math_arithmetic"></block>
-      </category>
-      <category name="Teks & Output" colour="#FFEB3B">
-        <block type="text"><field name="TEXT">Teks bebas...</field></block>
-        <block type="text_print">
-          <value name="TEXT"><shadow type="text"><field name="TEXT">Halo Dunia!</field></shadow></value>
-        </block>
-      </category>
-      <category name="Variabel" colour="#FF9800" custom="VARIABLE"></category>
-      <category name="Sensor IoT" colour="#00BCD4">
-        <block type="text"><field name="TEXT">Sensor ZA620_M5 Mendeteksi</field></block>
+      <category name="6. Sensor & IoT" colour="#00BCD4">
+        <block type="text"><field name="TEXT">Sensor ZA620_M5</field></block>
         <block type="text"><field name="TEXT">Kapasitas Penuh</field></block>
-        <block type="text_print">
-          <value name="TEXT"><shadow type="text"><field name="TEXT">Kirim Data ke Cloud!</field></shadow></value>
-        </block>
+        <block type="text"><field name="TEXT">Sensor Suhu (Celcius)</field></block>
       </category>
     </xml>
   </div>
@@ -328,9 +333,9 @@
     /* === FITUR 1: FLOWCHART === */
     let stepCount = 0;
     const hintsFC = {
-      1: ["Langkah 1: Awali flowchart-mu dengan simbol OVAL dan ketik 'Mulai'.", "Langkah 2: Gunakan JAJARGENJANG untuk Input data 'Siapkan Teh dan Air'.", "Langkah 3: Gunakan simbol PERSEGI karena ini adalah proses 'Menyeduh Teh'.", "Langkah 4: Akhiri dengan simbol OVAL dan ketik 'Selesai'."],
-      2: ["Langkah 1: Mulai dengan OVAL (Mulai).", "Langkah 2: Ambil data cuaca menggunakan JAJARGENJANG (Cek Cuaca).", "Langkah 3: Gunakan BELAH KETUPAT untuk bertanya 'Apakah Hujan Turun?'.", "Langkah 4: Jika Ya, lakukan aksi PERSEGI 'Pakai Payung'. Tutup misimu dengan OVAL (Selesai)."],
-      3: ["Langkah 1: Mulai dengan OVAL (Mulai).", "Langkah 2: Gunakan BELAH KETUPAT dan ketik 'Apakah sudah 3 Putaran?'.", "Langkah 3: Lanjutkan dengan instruksi PERSEGI 'Lari 1 Putaran'.", "Langkah 4: Susun dan klik Uji Coba untuk melihat apakah logikamu terjebak infinite loop!"]
+      1: ["Langkah 1: Awali dengan OVAL (Mulai).", "Langkah 2: Gunakan JAJARGENJANG untuk Input data.", "Langkah 3: Gunakan PERSEGI untuk Proses (Tindakan).", "Langkah 4: Akhiri dengan OVAL (Selesai)."],
+      2: ["Langkah 1: Mulai dengan OVAL.", "Langkah 2: Ambil data cuaca (JAJARGENJANG).", "Langkah 3: Gunakan BELAH KETUPAT untuk bertanya 'Apakah Hujan Turun?'. Percabangan harus ada!", "Langkah 4: Tutup dengan OVAL (Selesai)."],
+      3: ["Langkah 1: Mulai dengan OVAL.", "Langkah 2: Gunakan BELAH KETUPAT (Apakah sudah 3 Putaran?).", "Langkah 3: Lanjutkan dengan instruksi PERSEGI (Lari).", "Langkah 4: Ingat, belah ketupat adalah kunci dari looping!"]
     };
     let indexFC = 0;
 
@@ -395,19 +400,19 @@
         if (currentFlowchartLvl === 1) {
           if (arrSimbol[0] === 'OVAL' && arrSimbol[arrSimbol.length-1] === 'OVAL' && arrSimbol.includes('PERSEGI') && arrSimbol.includes('JAJARGENJANG')) {
             header.innerHTML = "🎉 LEVEL CLEARED: Alur Logika Diterima!"; header.style.background = '#dcfce7'; header.style.color = '#047857';
-            kritis.innerHTML = "Luar Biasa! Kamu telah memahami fungsi spesifik setiap simbol sesuai materi di atas."; kritis.className = "text-benar";
+            kritis.innerHTML = "Luar Biasa! Kamu telah memahami fungsi spesifik setiap simbol. Sesuai dengan materi di atas."; kritis.className = "text-benar";
           } else {
             header.innerHTML = "❌ GAME OVER: Terjadi Kesalahan Simbol"; header.style.background = '#fee2e2'; header.style.color = '#b91c1c';
-            kritis.innerHTML = "Logikamu keliru. Coba baca ulang panduan simbol. Pastikan program diawali/diakhiri OVAL."; kritis.className = "text-kritis";
+            kritis.innerHTML = "Logikamu keliru. Coba baca ulang modul awal. Pastikan program diawali/diakhiri OVAL."; kritis.className = "text-kritis";
           }
           benar.innerHTML = "1. [OVAL] Mulai<br>2. [JAJARGENJANG] Siapkan Teh & Air (Input)<br>3. [PERSEGI] Seduh Teh (Proses)<br>4. [OVAL] Selesai";
         } else {
           if (arrSimbol.includes('BELAH_KETUPAT')) {
             header.innerHTML = "🎉 LEVEL CLEARED: Persimpangan Logika Ditemukan!"; header.style.background = '#dcfce7'; header.style.color = '#047857';
-            kritis.innerHTML = "Bagus! Kamu berhasil mengimplementasikan struktur kontrol. Komputer kini bisa 'berpikir' mengambil cabang keputusan."; kritis.className = "text-benar";
+            kritis.innerHTML = "Bagus! Kamu berhasil mengimplementasikan struktur kontrol (Decision) sesuai materi."; kritis.className = "text-benar";
           } else {
             header.innerHTML = "❌ GAME OVER: Struktur Keputusan Hilang!"; header.style.background = '#fee2e2'; header.style.color = '#b91c1c';
-            kritis.innerHTML = "Ups! Kamu tidak menggunakan BELAH KETUPAT! Program tidak bisa mengambil keputusan atau melakukan looping."; kritis.className = "text-kritis";
+            kritis.innerHTML = "Ups! Kamu tidak menggunakan BELAH KETUPAT! Program tidak bisa mengambil keputusan/perulangan."; kritis.className = "text-kritis";
           }
           benar.innerHTML = "Wajib ada [BELAH KETUPAT] di tengah alur yang akan mengeksekusi [PERSEGI] berdasarkan jawabannya.";
         }
@@ -440,13 +445,13 @@
         opsi.innerHTML = `
           <button class="case-btn" onclick="jawabEtika('salah', 'A. Screenshot fotonya untuk disimpan buat bahan candaan di kemudian hari.', 'Menyimpan data sensitif orang lain tanpa izin juga termasuk pelanggaran etika digital.')">A. Screenshot fotonya untuk disimpan buat bahan candaan di kemudian hari.</button>
           <button class="case-btn" onclick="jawabEtika('salah', 'B. Beri komentar pujian saja karena fotonya bagus.', 'Membiarkan teman dalam bahaya pencurian identitas bukanlah sikap warga digital yang baik.')">B. Beri komentar pujian saja karena fotonya bagus.</button>
-          <button class="case-btn" onclick="jawabEtika('benar', 'C. Segera DM temanmu untuk menghapusnya karena rawan pencurian data.', 'Sangat bijak! Melindungi privasi diri sendiri dan orang lain adalah hal utama dalam berinternet.')">C. Segera DM temanmu untuk menghapusnya karena rawan pencurian data.</button>
+          <button class="case-btn" onclick="jawabEtika('benar', 'C. Segera DM (Pesan Pribadi) temanmu untuk menghapusnya karena rawan pencurian data.', 'Sangat bijak! Melindungi privasi diri sendiri dan orang lain adalah hal utama dalam berinternet.')">C. Segera DM (Pesan Pribadi) temanmu untuk menghapusnya karena rawan pencurian data.</button>
           <button class="case-btn" onclick="jawabEtika('salah', 'D. Laporkan akunnya agar diblokir oleh pihak Instagram.', 'Melaporkan akun secara langsung itu berlebihan, lebih baik ingatkan temanmu secara personal terlebih dahulu.')">D. Laporkan akunnya agar diblokir oleh pihak Instagram.</button>
         `;
       } else if (lvl === 3) {
         judul.innerText = "Level 3: Etika Kecerdasan Artifisial (Manipulasi Deepfake Video)";
         media.innerHTML = `<iframe src="https://www.youtube.com/embed/gLoI9hAX9dw?rel=0" allowfullscreen></iframe>`;
-        desc.innerHTML = "<b>Skenario Video:</b> Beredar video seorang tokoh publik sedang mengatakan hal provokatif. Namun jika diperhatikan, gerak bibir dan ekspresinya sangat kaku seperti editan AI (Deepfake).";
+        desc.innerHTML = "<b>Skenario Video:</b> Beredar video seorang tokoh publik/Kepala Sekolah sedang mengatakan hal provokatif. Namun jika diperhatikan, gerak bibir dan ekspresinya sangat kaku seperti editan AI (Deepfake).";
         opsi.innerHTML = `
           <button class="case-btn" onclick="jawabEtika('salah', 'A. Emosi dan ikut menyebarkannya agar cepat viral.', 'Menyebar video palsu sama dengan menebar fitnah dan dapat dijerat UU ITE.')">A. Emosi dan ikut menyebarkannya agar cepat viral.</button>
           <button class="case-btn" onclick="jawabEtika('benar', 'B. Menganalisis kejanggalan video (Fact-Check) dan mengingatkan orang lain bahwa itu buatan AI.', 'Kritis! Kamu mampu mengidentifikasi artefak (kecacatan editan) pada manipulasi AI tingkat tinggi.')">B. Menganalisis kejanggalan video (Fact-Check) dan mengingatkan orang lain bahwa itu buatan AI.</button>
@@ -466,21 +471,21 @@
       } else if (lvl === 5) {
         judul.innerText = "Level 5: Etika Penggunaan AI Generatif (Plagiarisme)";
         media.innerHTML = `<img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80" alt="AI Chat" onerror="this.src='https://via.placeholder.com/800x400?text=ChatGPT+Ethics'">`;
-        desc.innerHTML = "<b>Skenario:</b> Guru memberikan tugas membuat esai tentang pengalaman pribadimu. Kamu sedang malas mengetik.";
+        desc.innerHTML = "<b>Skenario:</b> Guru memberikan tugas membuat esai tentang pengalaman pribadimu selama liburan. Kamu sedang malas mengetik.";
         opsi.innerHTML = `
           <button class="case-btn" onclick="jawabEtika('salah', 'A. Menyuruh ChatGPT menuliskannya dari awal sampai akhir dan langsung mengumpulkannya.', 'Ini adalah Plagiarisme Akademik. Kamu membohongi diri sendiri dengan menggunakan mesin untuk menciptakan pengalaman palsu.')">A. Menyuruh ChatGPT menuliskannya dari awal sampai akhir dan langsung mengumpulkannya.</button>
-          <button class="case-btn" onclick="jawabEtika('benar', 'B. Menggunakan ChatGPT hanya untuk mencari ide kerangka tulisan, lalu mengetik ceritanya sendiri.', 'Sangat beretika! AI adalah alat bantu (Co-pilot), bukan pengganti nalar dan kejujuran manusia.')">B. Menggunakan ChatGPT hanya untuk mencari ide kerangka tulisan, lalu mengetik ceritanya sendiri.</button>
+          <button class="case-btn" onclick="jawabEtika('benar', 'B. Menggunakan ChatGPT hanya untuk mencari ide kerangka tulisan, lalu mengetik isi ceritanya dengan bahasa sendiri.', 'Sangat beretika! AI adalah alat bantu (Co-pilot), bukan pengganti nalar dan kejujuran manusia.')">B. Menggunakan ChatGPT hanya untuk mencari ide kerangka tulisan, lalu mengetik isi ceritanya dengan bahasa sendiri.</button>
           <button class="case-btn" onclick="jawabEtika('salah', 'C. Menyuruh AI membuatnya, lalu menyalahkan AI jika nilainya jelek.', 'Manusia adalah penanggung jawab tertinggi (Human in the loop), bukan mesin.')">C. Menyuruh AI membuatnya, lalu menyalahkan AI jika nilainya jelek.</button>
           <button class="case-btn" onclick="jawabEtika('salah', 'D. Membayar teman untuk mengerjakan tugas tersebut.', 'Ini sama saja dengan berbuat curang dan tidak mengasah kemampuan literasimu.')">D. Membayar teman untuk mengerjakan tugas tersebut.</button>
         `;
       } else if (lvl === 6) {
         judul.innerText = "Level 6: Keamanan Data & Sistem Jaringan (IoT)";
         media.innerHTML = `<iframe src="https://www.youtube.com/embed/z5nc9MDbvkw?rel=0" allowfullscreen></iframe>`;
-        desc.innerHTML = "<b>Skenario Video:</b> Kamu merakit alat sistem cerdas IoT di bengkel sekolah. Sistem memancarkan data biometrik (sidik jari) ke server tanpa menggunakan sandi keamanan (enkripsi).";
+        desc.innerHTML = "<b>Skenario Video:</b> Kamu merakit alat sistem cerdas IoT di bengkel sekolah. Sistem memancarkan data biometrik (sidik jari) ke server tanpa menggunakan sandi keamanan (enkripsi) di jaringan WiFi publik.";
         opsi.innerHTML = `
           <button class="case-btn" onclick="jawabEtika('salah', 'A. Biarkan saja, IoT cuma alat mainan sekolah.', 'Alat sekolah sekalipun jika merekam biometrik siswa asli harus diperlakukan sebagai data rahasia.')">A. Biarkan saja, IoT cuma alat mainan sekolah.</button>
           <button class="case-btn" onclick="jawabEtika('benar', 'B. Segera terapkan Enkripsi End-to-End karena data bisa dicegat (di-hack) oleh pihak luar.', 'Pola pikir Cybersecurity tingkat lanjut! Tanggung jawab programmer adalah menjamin kerahasiaan data.')">B. Segera terapkan Enkripsi End-to-End karena data bisa dicegat (di-hack) oleh pihak luar.</button>
-          <button class="case-btn" onclick="jawabEtika('salah', 'C. Cukup sembunyikan alatnya agar tidak terlihat orang.', 'Menyembunyikan alat secara fisik (Hardware) tidak mencegah peretas (Hacker) menyadap sinyal WiFi (Network).')">C. Cukup sembunyikan alatnya agar tidak terlihat orang.</button>
+          <button class="case-btn" onclick="jawabEtika('salah', 'C. Cukup sembunyikan alatnya agar tidak terlihat orang.', 'Menyembunyikan alat secara fisik (Hardware) tidak mencegah peretas (Hacker) menyadap sinyal WiFi (Network/Software).')">C. Cukup sembunyikan alatnya agar tidak terlihat orang.</button>
           <button class="case-btn" onclick="jawabEtika('salah', 'D. Matikan alat setiap malam hari.', 'Peretasan data bisa terjadi kapan saja, detik di mana alat itu dihidupkan tanpa pengaman.')">D. Matikan alat setiap malam hari.</button>
         `;
       }
@@ -505,17 +510,45 @@
       panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    /* === FITUR 3: KODING BLOK === */
+    /* === FITUR 3: KODING BLOK (6 LEVEL LENGKAP & TUTORIAL) === */
     var workspace = Blockly.inject('blocklyArea', {
       toolbox: document.getElementById('toolbox'), trashcan: true,
       zoom: { controls: true, wheel: false, startScale: 1.1, maxScale: 3, minScale: 0.5 }
     });
 
     const hintsKD = {
-      1: ["Langkah 1: Klik kategori 'Variabel' di menu kiri, buat variabel bernama 'nilai'.", "Langkah 2: Ambil blok 'Tetapkan nilai ke...'.", "Langkah 3: Buka kategori 'Matematika', pasangkan blok angka '0' di sebelahnya dan ubah jadi 100.", "Langkah 4: Buka kategori 'Teks & Output', ambil blok 'Cetak', lalu pasangkan dengan blok 'Variabel' nilai."],
-      2: ["Langkah 1: Buka kategori 'Logika & Kondisi', ambil blok 'Jika / do'.", "Langkah 2: Ambil blok perbandingan '=' dari menu Logika.", "Langkah 3: Pasangkan 'Variabel nilai' dengan blok angka '100' di dalam perbandingan tersebut.", "Langkah 4: Di dalam celah 'do', pasangkan blok 'Cetak' dan isi teks 'Lulus'."],
-      3: ["Langkah 1: Buka kategori 'Perulangan (Loop)' dan ambil blok 'Ulangi 3 kali'.", "Langkah 2: Buka kategori 'Teks & Output', ambil blok 'Cetak' dan letakkan di dalam blok perulangan tadi.", "Langkah 3: Ganti teks di dalam blok cetak menjadi 'Bunyikan Alarm!'."],
-      4: ["Langkah 1: Kita mensimulasikan sistem cerdas IoT! Ambil blok 'Jika / do' dari menu Logika.", "Langkah 2: Ambil blok perbandingan '=', pasangkan 'Sensor ZA620_M5' dengan teks 'Kapasitas Penuh'.", "Langkah 3: Di dalam celah 'do', pasang perintah 'Cetak: Kirim Data ke Cloud!'."]
+      1: [
+        "Langkah 1: Klik kategori 'Aksi (Output)' di menu kiri, ambil blok 'Cetak'.",
+        "Langkah 2: Buka kategori 'Teks & Data', ambil blok teks 'Halo Informatika!'.",
+        "Langkah 3: Pasangkan blok teks tersebut ke dalam celah blok 'Cetak'."
+      ],
+      2: [
+        "Langkah 1: Buka kategori 'Variabel & Angka', ambil blok 'Tetapkan nilai ke...'.",
+        "Langkah 2: Ambil blok angka '100' dan pasangkan ke blok variabel tadi.",
+        "Langkah 3: Buka kategori 'Aksi (Output)', ambil blok 'Cetak', lalu isi ruang kosongnya dengan blok 'nilai' (dari menu Variabel)."
+      ],
+      3: [
+        "Langkah 1: Buka kategori 'Logika (IF)', ambil blok 'Jika / do'.",
+        "Langkah 2: Ambil blok perbandingan '=' dari menu Logika.",
+        "Langkah 3: Di blok perbandingan, pasangkan blok 'nilai' (dari menu Variabel) dengan blok angka '100'.",
+        "Langkah 4: Di dalam celah 'do', pasangkan blok 'Cetak' dan letakkan blok teks 'Lulus' di dalamnya."
+      ],
+      4: [
+        "Langkah 1: Buka kategori 'Perulangan (Loop)' dan ambil blok 'Ulangi 3 kali'.",
+        "Langkah 2: Buka kategori 'Aksi (Output)', ambil blok 'Cetak' dan letakkan di dalam perut blok perulangan tadi.",
+        "Langkah 3: Buka kategori 'Teks & Data', ambil blok teks 'Bunyikan Alarm!' dan tempelkan ke blok cetak tersebut."
+      ],
+      5: [
+        "Langkah 1: Ambil blok 'Jika / do' dari menu Logika.",
+        "Langkah 2: Karena ini logika ganda, ambil blok '... dan ...' (AND) dari menu Logika dan pasangkan ke IF.",
+        "Langkah 3: Di celah pertama AND, buat perbandingan 'nilai = 100'. Di celah kedua AND, buat perbandingan 'Sensor Suhu (Celcius) = 40'.",
+        "Langkah 4: Jika keduanya terpenuhi, beri aksi Cetak teks 'Bahaya! Suhu Panas'."
+      ],
+      6: [
+        "Langkah 1: Kita mensimulasikan sistem cerdas IoT! Ambil blok 'Jika / do' dari menu Logika.",
+        "Langkah 2: Ambil blok perbandingan '=', pasangkan blok 'Sensor ZA620_M5' dengan teks 'Kapasitas Penuh' (Keduanya ada di menu Sensor & IoT).",
+        "Langkah 3: Di dalam celah 'do', pasang perintah 'Cetak' dan tempelkan blok teks 'Kirim Data ke Cloud!'."
+      ]
     };
     let indexKD = 0;
 
@@ -523,7 +556,7 @@
       const arr = hintsKD[currentKodingLvl];
       const msgBox = document.getElementById('tutor-kd-msg');
       if (indexKD < arr.length) { msgBox.innerHTML = `<b>Instruktur:</b> ${arr[indexKD]}`; indexKD++; } 
-      else { msgBox.innerHTML = "<b>Instruktur:</b> Aku sudah memandumu. Sekarang tekan tombol ▶ Jalankan Program untuk menguji logikamu!"; }
+      else { msgBox.innerHTML = "<b>Instruktur:</b> Aku sudah memandumu semua langkahnya. Sekarang susun kepingannya dan tekan tombol ▶ Jalankan Program!"; }
     }
 
     function setKodingLvl(lvl, btn) {
@@ -533,10 +566,12 @@
       document.getElementById('eval-kd').style.display = 'none'; 
       const box = document.getElementById('kd-materi');
       
-      if(lvl === 1) box.innerHTML = `<h3>Praktik Level 1: Deklarasi Variabel</h3><div class="materi-content"><b>Misi:</b> Komputer butuh wadah data. Buat variabel <code>nilai</code> dengan angka <b>100</b>, lalu cetak variabel tersebut.</div>`;
-      else if(lvl === 2) box.innerHTML = `<h3>Praktik Level 2: Logika Kondisi (IF)</h3><div class="materi-content"><b>Misi:</b> Komputer bisa mengambil keputusan. Susun program: JIKA nilai = 100, MAKA Cetak Teks "Lulus".</div>`;
-      else if(lvl === 3) box.innerHTML = `<h3>Praktik Level 3: Perulangan (Looping)</h3><div class="materi-content"><b>Misi:</b> Komputer hebat dalam mengulang perintah. Buatlah program yang mencetak peringatan "Bunyikan Alarm!" sebanyak 3 kali secara otomatis.</div>`;
-      else if(lvl === 4) box.innerHTML = `<h3>Praktik Level 4: Simulasi Sensor Sistem Cerdas (IoT)</h3><div class="materi-content"><b>Misi:</b> JIKA (Sensor Mendeteksi = Kapasitas Penuh), MAKA lakukan perintah mencetak "Kirim Data ke Cloud!".</div>`;
+      if(lvl === 1) box.innerHTML = `<h3>Praktik Level 1: Teks Pertama (Hello World)</h3><div class="materi-content"><b>Misi:</b> Program paling dasar di dunia koding. Tarik perintah <b>Cetak</b> lalu gabungkan dengan teks <b>"Halo Informatika!"</b>.</div>`;
+      else if(lvl === 2) box.innerHTML = `<h3>Praktik Level 2: Deklarasi Variabel & Output</h3><div class="materi-content"><b>Misi:</b> Komputer butuh wadah data. Buat variabel <code>nilai</code> dengan angka <b>100</b>, lalu cetak variabel tersebut.</div>`;
+      else if(lvl === 3) box.innerHTML = `<h3>Praktik Level 3: Logika Kondisi (IF)</h3><div class="materi-content"><b>Misi:</b> Komputer bisa mengambil keputusan. Susun program: JIKA nilai = 100, MAKA Cetak Teks "Lulus".</div>`;
+      else if(lvl === 4) box.innerHTML = `<h3>Praktik Level 4: Perulangan (Looping)</h3><div class="materi-content"><b>Misi:</b> Komputer hebat dalam mengulang perintah. Buat program yang mencetak "Bunyikan Alarm!" sebanyak 3 kali otomatis.</div>`;
+      else if(lvl === 5) box.innerHTML = `<h3>Praktik Level 5: Logika Ganda (AND/OR)</h3><div class="materi-content"><b>Misi:</b> Komputer mengecek 2 syarat sekaligus. JIKA nilai = 100 <b>DAN</b> Sensor Suhu = 40, MAKA cetak "Bahaya! Suhu Panas".</div>`;
+      else if(lvl === 6) box.innerHTML = `<h3>Praktik Level 6: Simulasi Sensor Sistem Cerdas (IoT)</h3><div class="materi-content"><b>Misi:</b> JIKA (Sensor ZA620_M5 = Kapasitas Penuh), MAKA lakukan perintah mencetak "Kirim Data ke Cloud!".</div>`;
       
       workspace.clear();
     }
@@ -555,32 +590,71 @@
         panel.style.display = 'block';
 
         if (currentKodingLvl === 1) {
-          if (code.includes('var') && code.includes('window.alert')) {
+          if (code.includes('window.alert') && code.includes('Halo Informatika!')) {
+            header.innerHTML = "🎉 LEVEL CLEARED: Halo Dunia Berhasil!"; header.style.background = '#dcfce7'; header.style.color = '#047857';
+            kritis.innerHTML = "Selamat! Kamu berhasil memerintahkan komputer untuk berbicara. Ini adalah tradisi awal programmer di seluruh dunia!";
+            kritis.className = "text-benar";
+          } else {
+            header.innerHTML = "❌ GAME OVER: Perintah Cetak Salah"; header.style.background = '#fee2e2'; header.style.color = '#b91c1c';
+            kritis.innerHTML = "Pastikan kamu menggunakan blok [Cetak] dan menggabungkannya persis dengan blok teks [Halo Informatika!].";
+            kritis.className = "text-kritis";
+          }
+          benar.innerHTML = "Gunakan blok [Cetak] dan isi dengan teks [Halo Informatika!].";
+        } else if (currentKodingLvl === 2) {
+          if (code.includes('nilai') && code.includes('window.alert') && code.includes('100')) {
             header.innerHTML = "🎉 LEVEL CLEARED: Alokasi Memori Berhasil!"; header.style.background = '#dcfce7'; header.style.color = '#047857';
-            kritis.innerHTML = "Logikamu sangat tepat! Blok yang kamu susun membuktikan bahwa kamu mengerti cara mendeklarasikan data dan menampilkannya.";
+            kritis.innerHTML = "Logikamu sangat tepat! Blok yang kamu susun membuktikan bahwa kamu mengerti cara mendeklarasikan data variabel dan memanggilnya kembali ke layar.";
+            kritis.className = "text-benar";
           } else {
-            header.innerHTML = "❌ GAME OVER: Logika Kurang Tepat"; header.style.background = '#fee2e2'; header.style.color = '#b91c1c';
+            header.innerHTML = "❌ GAME OVER: Logika Variabel Keliru"; header.style.background = '#fee2e2'; header.style.color = '#b91c1c';
             kritis.innerHTML = "Kodemumu belum tepat. Komputer membutuhkan perintah Set Variabel DAN perintah Cetak secara bersamaan. (Klik Minta Bantuan jika bingung).";
+            kritis.className = "text-kritis";
           }
-          benar.innerHTML = "Gunakan blok: [Tetapkan Variabel = Angka] disambung dengan [Cetak (Panggil Variabel)].";
-        } else if (currentKodingLvl === 2 || currentKodingLvl === 4) {
-          if (code.includes('if')) {
-            header.innerHTML = "🎉 LEVEL CLEARED: Logika Kontrol Perangkat Diterima!"; header.style.background = '#dcfce7'; header.style.color = '#047857';
-            kritis.innerHTML = "Bagus! Dalam sistem cerdas atau IoT, perangkat akan mengambil tindakan hanya setelah kondisi pemicunya terpenuhi melalui blok IF ini.";
-          } else {
-            header.innerHTML = "❌ GAME OVER: Logika Kondisi Hilang!"; header.style.background = '#fee2e2'; header.style.color = '#b91c1c';
-            kritis.innerHTML = "Tanpa struktur JIKA (IF), sistem komputermu tidak bisa mengevaluasi keadaan sekitar. Aksi tidak boleh dijalankan sembarangan!";
-          }
-          benar.innerHTML = "Gunakan blok [JIKA / IF] yang dipasangkan dengan blok [Logika Perbandingan], lalu masukkan perintah [Cetak] di dalam celah 'do'.";
+          benar.innerHTML = "Gunakan blok: [Tetapkan Variabel 'nilai' = 100] disambung dengan [Cetak (variabel 'nilai')].";
         } else if (currentKodingLvl === 3) {
-          if (code.includes('for') || code.includes('while')) {
+          if (code.includes('if') && code.includes('100') && code.includes('Lulus')) {
+            header.innerHTML = "🎉 LEVEL CLEARED: Keputusan Bersyarat Berhasil!"; header.style.background = '#dcfce7'; header.style.color = '#047857';
+            kritis.innerHTML = "Bagus! Komputermu sekarang bisa mengambil keputusan (Decision) layaknya belah ketupat di Flowchart.";
+            kritis.className = "text-benar";
+          } else {
+            header.innerHTML = "❌ GAME OVER: Logika Kondisi Keliru!"; header.style.background = '#fee2e2'; header.style.color = '#b91c1c';
+            kritis.innerHTML = "Struktur kondisimu kurang lengkap. Pastikan kamu menggunakan blok IF, mengecek apakah nilai = 100, lalu mencetak teks 'Lulus'.";
+            kritis.className = "text-kritis";
+          }
+          benar.innerHTML = "Gunakan blok [JIKA / IF] yang dipasangkan dengan blok Perbandingan [nilai = 100], lalu masukkan perintah [Cetak 'Lulus'] di dalam celah 'do'.";
+        } else if (currentKodingLvl === 4) {
+          if ((code.includes('for') || code.includes('while')) && code.includes('Bunyikan Alarm')) {
             header.innerHTML = "🎉 LEVEL CLEARED: Perulangan Terdeteksi!"; header.style.background = '#dcfce7'; header.style.color = '#047857';
             kritis.innerHTML = "Tepat sekali! Blok perulangan ini membantumu agar tidak perlu menulis blok 'Cetak' berulang-ulang sampai tanganmu pegal.";
+            kritis.className = "text-benar";
           } else {
-            header.innerHTML = "❌ GAME OVER: Tidak Ada Loop!"; header.style.background = '#fee2e2'; header.style.color = '#b91c1c';
-            kritis.innerHTML = "Kamu lupa memasukkan blok 'Ulangi ... kali'. Algoritma yang baik harus efisien, bukan menulis aksi yang sama secara manual berulang-ulang.";
+            header.innerHTML = "❌ GAME OVER: Tidak Ada Loop yang Sesuai!"; header.style.background = '#fee2e2'; header.style.color = '#b91c1c';
+            kritis.innerHTML = "Kamu lupa memasukkan blok 'Ulangi 3 kali' atau teks yang dicetak bukan 'Bunyikan Alarm!'. Algoritma harus persis sesuai spesifikasi.";
+            kritis.className = "text-kritis";
           }
-          benar.innerHTML = "Gunakan blok [Ulangi 3 kali] dan masukkan blok [Cetak] di dalamnya.";
+          benar.innerHTML = "Gunakan blok [Ulangi 3 kali] dan masukkan blok [Cetak 'Bunyikan Alarm!'] di dalamnya.";
+        } else if (currentKodingLvl === 5) {
+          if (code.includes('if') && code.includes('&&') && code.includes('Bahaya')) {
+            header.innerHTML = "🎉 LEVEL CLEARED: Logika Ganda Berhasil!"; header.style.background = '#dcfce7'; header.style.color = '#047857';
+            kritis.innerHTML = "Luar biasa! Kamu berhasil membuat komputer berpikir kompleks dengan menggabungkan 2 syarat sekaligus (Logika AND).";
+            kritis.className = "text-benar";
+          } else {
+            header.innerHTML = "❌ GAME OVER: Logika Ganda Gagal!"; header.style.background = '#fee2e2'; header.style.color = '#b91c1c';
+            kritis.innerHTML = "Kamu harus menggunakan blok [ ... dan ... ] di dalam blok IF untuk membandingkan 2 kondisi sekaligus.";
+            kritis.className = "text-kritis";
+          }
+          benar.innerHTML = "Gunakan blok IF. Di dalam IF, masukkan blok AND. Celah 1 AND: nilai=100. Celah 2 AND: Suhu=40. Di dalam DO: Cetak 'Bahaya! Suhu Panas'.";
+        } else if (currentKodingLvl === 6) {
+          if (code.includes('if') && code.includes('Kapasitas Penuh') && code.includes('Kirim Data ke Cloud!')) {
+            header.innerHTML = "🎉 LEVEL CLEARED: Logika Kontrol Perangkat Diterima!"; header.style.background = '#dcfce7'; header.style.color = '#047857';
+            kritis.innerHTML = "Sempurna! Dalam sistem cerdas atau IoT, perangkat akan mengambil tindakan hanya setelah kondisi pemicu sensornya terpenuhi melalui blok IF ini.";
+            kritis.className = "text-benar";
+          } else {
+            header.innerHTML = "❌ GAME OVER: Pemicu Sensor Gagal!"; header.style.background = '#fee2e2'; header.style.color = '#b91c1c';
+            kritis.innerHTML = "Tanpa struktur JIKA (IF) yang benar, perangkat IoT-mu akan terus mengirim instruksi membabi-buta (Spam Data). Pastikan membandingkan sensor dengan teks yang tepat.";
+            kritis.className = "text-kritis";
+          }
+          benar.innerHTML = "Gunakan blok [JIKA / IF] dipasangkan dengan [Sensor ZA620_M5 = Kapasitas Penuh], lalu masukkan perintah [Cetak 'Kirim Data ke Cloud!'] di celah 'do'.";
         }
         panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
       } catch(err) {
