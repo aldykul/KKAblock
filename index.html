@@ -25,10 +25,16 @@
     .lvl-btn { background: #cbd5e1; color: #334155; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; font-size: 0.9rem; font-weight: bold; transition: 0.2s;}
     .lvl-btn.active { background: #10b981; color: white; transform: scale(1.05);}
 
+    /* Desain Panel Materi Awal & Modul */
+    .materi-awal { background: #ffffff; border: 2px solid #e2e8f0; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+    .materi-awal h3 { margin: 0 0 15px 0; color: #0f172a; font-size: 1.3rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; display: flex; align-items: center; gap: 10px;}
     .materi-box { background: #f0f9ff; border-left: 5px solid #0ea5e9; padding: 15px; margin-bottom: 15px; border-radius: 5px; }
     .materi-box h3 { margin: 0 0 10px 0; color: #0369a1; font-size: 1.2rem; border-bottom: 1px solid #bae6fd; padding-bottom: 5px;}
     .materi-content { font-size: 0.95rem; line-height: 1.6; color: #334155; }
+    .materi-content ul { margin: 10px 0; padding-left: 25px;}
+    .materi-content li { margin-bottom: 5px; }
     
+    /* PANDUAN SIMBOL FLOWCHART */
     .guide-box { background: #fffbeb; border: 1px solid #fde68a; padding: 15px; border-radius: 8px; margin-bottom: 15px; }
     .guide-box h4 { margin: 0 0 10px 0; color: #b45309; }
     .guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
@@ -84,11 +90,64 @@
 
   <div id="tab-flowchart" class="content-section active">
     
+    <div class="materi-awal">
+      <h3>📚 Materi Dasar: Apa itu Algoritma & Flowchart?</h3>
+      <div class="materi-content">
+        <p><b>Algoritma</b> adalah urutan langkah-langkah logis untuk menyelesaikan suatu masalah. Sebelum kita membuat kode, kita merancang jalan pikirannya menggunakan <b>Flowchart (Diagram Alir)</b>.</p>
+        <p><b>3 Struktur Utama Algoritma:</b></p>
+        <ul>
+          <li><b>1. Sekuensial (Lurus):</b> Langkah berjalan dari atas ke bawah tanpa syarat. (Contoh: Menanak nasi).</li>
+          <li><b>2. Percabangan (If/Else):</b> Pengambilan keputusan berdasarkan kondisi. (Contoh: JIKA hujan, MAKA pakai payung).</li>
+          <li><b>3. Perulangan (Looping):</b> Mengulang pekerjaan selama kondisi terpenuhi. (Contoh: Lari keliling lapangan 3 putaran).</li>
+        </ul>
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin: 20px 0; text-align: center;">
+          <h4 style="margin:0 0 15px 0; color:#334155;">Contoh Flowchart: Sistem Pendingin Ruangan Otomatis</h4>
+          <svg viewBox="0 0 400 350" style="width:100%; max-width:400px; height:auto; font-family:sans-serif; font-weight:bold;">
+            <rect x="150" y="10" width="100" height="40" rx="20" fill="#e11d48" />
+            <text x="200" y="35" fill="white" text-anchor="middle">Mulai (OVAL)</text>
+            <line x1="200" y1="50" x2="200" y2="80" stroke="#334155" stroke-width="2" marker-end="url(#arrow)" />
+            
+            <polygon points="160,80 260,80 240,120 140,120" fill="#9333ea" />
+            <text x="200" y="105" fill="white" text-anchor="middle">Baca Suhu (I/O)</text>
+            <line x1="200" y1="120" x2="200" y2="150" stroke="#334155" stroke-width="2" marker-end="url(#arrow)" />
+
+            <polygon points="200,150 270,190 200,230 130,190" fill="#d97706" />
+            <text x="200" y="195" fill="white" text-anchor="middle">Suhu > 30°C ?</text>
+
+            <line x1="270" y1="190" x2="330" y2="190" stroke="#334155" stroke-width="2" marker-end="url(#arrow)" />
+            <text x="300" y="180" fill="#d97706" text-anchor="middle">Ya</text>
+            <rect x="280" y="210" width="100" height="40" fill="#2563eb" />
+            <text x="330" y="235" fill="white" text-anchor="middle">Kipas ON (Proses)</text>
+            
+            <line x1="130" y1="190" x2="70" y2="190" stroke="#334155" stroke-width="2" marker-end="url(#arrow)" />
+            <text x="100" y="180" fill="#d97706" text-anchor="middle">Tidak</text>
+            <rect x="20" y="210" width="100" height="40" fill="#2563eb" />
+            <text x="70" y="235" fill="white" text-anchor="middle">Kipas OFF (Proses)</text>
+
+            <line x1="330" y1="250" x2="330" y2="280" stroke="#334155" stroke-width="2" />
+            <line x1="330" y1="280" x2="210" y2="280" stroke="#334155" stroke-width="2" marker-end="url(#arrow)" />
+            <line x1="70" y1="250" x2="70" y2="280" stroke="#334155" stroke-width="2" />
+            <line x1="70" y1="280" x2="190" y2="280" stroke="#334155" stroke-width="2" marker-end="url(#arrow)" />
+            <line x1="200" y1="280" x2="200" y2="290" stroke="#334155" stroke-width="2" marker-end="url(#arrow)" />
+
+            <rect x="150" y="295" width="100" height="40" rx="20" fill="#e11d48" />
+            <text x="200" y="320" fill="white" text-anchor="middle">Selesai (OVAL)</text>
+            
+            <defs>
+              <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+                <path d="M0,0 L0,6 L9,3 z" fill="#334155" />
+              </marker>
+            </defs>
+          </svg>
+        </div>
+      </div>
+    </div>
+
     <div class="guide-box">
       <h4>📌 Panduan Penggunaan Simbol Flowchart Baku</h4>
       <div class="guide-grid">
         <div class="guide-item"><span class="symbol-icon" style="color:#e11d48;">⬭</span><b>OVAL</b><br>Titik <i>Mulai</i> dan <i>Selesai</i> program.</div>
-        <div class="guide-item"><span class="symbol-icon" style="color:#9333ea;">▱</span><b>JAJARGENJANG</b><br>Menerima data (Input) / Output.</div>
+        <div class="guide-item"><span class="symbol-icon" style="color:#9333ea;">▱</span><b>JAJARGENJANG</b><br>Menerima data (Input) / Menampilkan (Output).</div>
         <div class="guide-item"><span class="symbol-icon" style="color:#2563eb;">▭</span><b>PERSEGI</b><br>Menunjukkan tindakan/proses.</div>
         <div class="guide-item"><span class="symbol-icon" style="color:#d97706;">⬦</span><b>BELAH KETUPAT</b><br>Keputusan bersyarat (Ya / Tidak).</div>
       </div>
@@ -106,7 +165,7 @@
       <div class="tutorial-avatar">🤖</div>
       <div class="tutorial-text">
         <h4 id="tutor-title">Sistem Pemandu Misi Aktif!</h4>
-        <p id="tutor-fc-msg">Halo! Aku akan memandumu menyelesaikan kasus algoritma ini. Jika kamu kesulitan menyusun simbol, klik tombol Bantuan ya!</p>
+        <p id="tutor-fc-msg">Halo! Aku akan memandumu menyelesaikan kasus algoritma ini. Jika kamu merasa kesulitan menyusun simbolnya, klik tombol Bantuan di samping kanan ya!</p>
       </div>
       <button class="btn-hint" onclick="mintaBantuanFC()">💡 Minta Bantuan</button>
     </div>
@@ -129,12 +188,26 @@
   </div>
 
   <div id="tab-etika" class="content-section">
+
+    <div class="materi-awal">
+      <h3>📚 Materi Dasar: Literasi & Etika Kecerdasan Artifisial</h3>
+      <div class="materi-content">
+        <p><b>Literasi Digital</b> adalah kemampuan memahami, mengevaluasi, dan menyikapi informasi digital secara kritis. Sedangkan <b>Etika Kecerdasan Artifisial (AI)</b> adalah prinsip moral dalam penggunaan teknologi AI agar tidak merugikan masyarakat.</p>
+        <p><b>Pemanfaatan & Prinsip Utama di Kehidupan Sehari-hari:</b></p>
+        <ul>
+          <li><b>Menjaga Jejak Digital:</b> Tidak melakukan <i>oversharing</i> (menyebarkan identitas NIK/Kartu Pelajar) yang bisa memicu kejahatan finansial (Pinjol ilegal).</li>
+          <li><b>Saring Sebelum Sharing:</b> Memverifikasi (Fact-Checking) informasi, terutama membedakan video asli dari manipulasi AI Generatif seperti <b>Deepfake</b>.</li>
+          <li><b>Keamanan Sistem (IoT):</b> Sebagai pembuat teknologi, kita beretika melindungi privasi data (misal sidik jari) dengan enkripsi agar tidak disadap <i>hacker</i>.</li>
+        </ul>
+      </div>
+    </div>
+
     <div class="level-nav">
       <button class="lvl-btn active" onclick="setEtikaLvl(1, this)">Lv 1: Phishing</button>
       <button class="lvl-btn" onclick="setEtikaLvl(2, this)">Lv 2: Jejak Digital</button>
-      <button class="lvl-btn" onclick="setEtikaLvl(3, this)">Lv 3: Deepfake Wajah (AI)</button>
-      <button class="lvl-btn" onclick="setEtikaLvl(4, this)">Lv 4: Kloning Suara (AI)</button>
-      <button class="lvl-btn" onclick="setEtikaLvl(5, this)">Lv 5: Plagiarisme ChatGPT</button>
+      <button class="lvl-btn" onclick="setEtikaLvl(3, this)">Lv 3: Deepfake (AI)</button>
+      <button class="lvl-btn" onclick="setEtikaLvl(4, this)">Lv 4: Kloning Suara</button>
+      <button class="lvl-btn" onclick="setEtikaLvl(5, this)">Lv 5: Plagiarisme</button>
       <button class="lvl-btn" onclick="setEtikaLvl(6, this)">Lv 6: Keamanan IoT</button>
     </div>
 
@@ -151,13 +224,27 @@
       <div class="eval-body">
         <h4>🔍 Analisis Kritis Tindakanmu:</h4>
         <p id="et-kritis" class="text-kritis"></p>
-        <h4>💡 Rekomendasi Literasi & Etika yang Benar:</h4>
+        <h4>💡 Keputusan Paling Benar:</h4>
         <p id="et-benar" class="text-benar"></p>
       </div>
     </div>
   </div>
 
   <div id="tab-koding" class="content-section">
+
+    <div class="materi-awal">
+      <h3>📚 Materi Dasar: Pemrograman Visual (Koding Blok)</h3>
+      <div class="materi-content">
+        <p><b>Koding Blok</b> mempermudah kita merakit program logika mesin menggunakan kepingan blok <i>puzzle</i> visual, sehingga kita bisa fokus pada Algoritma tanpa pusing menghafal sintaks bahasa pemrograman (*syntax error*).</p>
+        <p><b>Pemanfaatan Blok dalam Sistem Cerdas:</b></p>
+        <ul>
+          <li><b>Variabel:</b> Sebagai "Wadah" untuk menyimpan data sensor (misal kapasitas sidik jari = 300).</li>
+          <li><b>Logika Kondisi (JIKA/IF):</b> Menjadi "Otak" sistem IoT. (Misal: <i>JIKA</i> kapasitas penuh, <i>MAKA</i> kirim peringatan).</li>
+          <li><b>Perulangan (Loop):</b> Mengotomatisasi instruksi mesin agar bekerja mandiri secara terus-menerus.</li>
+        </ul>
+      </div>
+    </div>
+
     <div class="level-nav">
       <button class="lvl-btn active" onclick="setKodingLvl(1, this)">Lv 1: Variabel Data</button>
       <button class="lvl-btn" onclick="setKodingLvl(2, this)">Lv 2: Logika Kondisi (IF)</button>
@@ -283,9 +370,9 @@
       document.querySelectorAll('#tab-flowchart .lvl-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active');
       currentFlowchartLvl = lvl; 
       const box = document.getElementById('fc-materi');
-      if(lvl === 1) box.innerHTML = `<h3>Level 1: Logika Sekuensial (Lurus)</h3><div class="materi-content"><b>Misi:</b> Susun langkah <b>Membuat Teh Manis</b> menggunakan 4 langkah dengan simbol yang tepat! <i>(OVAL -> JAJARGENJANG -> PERSEGI -> OVAL)</i></div>`;
-      else if(lvl === 2) box.innerHTML = `<h3>Level 2: Logika Percabangan (If/Else)</h3><div class="materi-content"><b>Misi:</b> Susun langkah <b>Berangkat Sekolah Musim Hujan</b>. Wajib menggunakan <i>BELAH KETUPAT (Apakah Hujan?)</i>.</div>`;
-      else if(lvl === 3) box.innerHTML = `<h3>Level 3: Logika Perulangan (Looping)</h3><div class="materi-content"><b>Misi:</b> Susun langkah <b>Lari 3 Putaran</b>. Gunakan <i>BELAH KETUPAT (Apakah sudah 3 kali?)</i>.</div>`;
+      if(lvl === 1) box.innerHTML = `<h3>Praktik Level 1: Logika Sekuensial</h3><div class="materi-content"><b>Misi:</b> Susun langkah <b>Membuat Teh Manis</b> menggunakan 4 langkah dengan simbol yang tepat! <i>(OVAL -> JAJARGENJANG -> PERSEGI -> OVAL)</i></div>`;
+      else if(lvl === 2) box.innerHTML = `<h3>Praktik Level 2: Logika Percabangan</h3><div class="materi-content"><b>Misi:</b> Susun langkah <b>Berangkat Sekolah di Musim Hujan</b>. Wajib menggunakan <i>BELAH KETUPAT (Apakah Hujan?)</i>.</div>`;
+      else if(lvl === 3) box.innerHTML = `<h3>Praktik Level 3: Logika Perulangan</h3><div class="materi-content"><b>Misi:</b> Susun langkah <b>Lari 3 Putaran</b>. Gunakan <i>BELAH KETUPAT (Apakah sudah 3 kali?)</i>.</div>`;
       resetFlowchart();
     }
 
@@ -306,29 +393,29 @@
         panel.style.display = 'block';
 
         if (currentFlowchartLvl === 1) {
-          if (arrSimbol[0] === 'OVAL' && arrSimbol[arrSimbol.length-1] === 'OVAL' && arrSimbol.includes('PERSEGI')) {
+          if (arrSimbol[0] === 'OVAL' && arrSimbol[arrSimbol.length-1] === 'OVAL' && arrSimbol.includes('PERSEGI') && arrSimbol.includes('JAJARGENJANG')) {
             header.innerHTML = "🎉 LEVEL CLEARED: Alur Logika Diterima!"; header.style.background = '#dcfce7'; header.style.color = '#047857';
-            kritis.innerHTML = "Luar Biasa! Kamu telah memahami fungsi spesifik setiap simbol. OVAL untuk batas program, JAJARGENJANG untuk input bahan, dan PERSEGI untuk mengeksekusi tindakan."; kritis.className = "text-benar";
+            kritis.innerHTML = "Luar Biasa! Kamu telah memahami fungsi spesifik setiap simbol sesuai materi di atas."; kritis.className = "text-benar";
           } else {
             header.innerHTML = "❌ GAME OVER: Terjadi Kesalahan Simbol"; header.style.background = '#fee2e2'; header.style.color = '#b91c1c';
-            kritis.innerHTML = "Logikamu keliru. Coba klik tombol 'Minta Bantuan'. Pastikan program diawali/diakhiri OVAL, dan bedakan antara Jajargenjang dengan Persegi."; kritis.className = "text-kritis";
+            kritis.innerHTML = "Logikamu keliru. Coba baca ulang panduan simbol. Pastikan program diawali/diakhiri OVAL."; kritis.className = "text-kritis";
           }
           benar.innerHTML = "1. [OVAL] Mulai<br>2. [JAJARGENJANG] Siapkan Teh & Air (Input)<br>3. [PERSEGI] Seduh Teh (Proses)<br>4. [OVAL] Selesai";
         } else {
           if (arrSimbol.includes('BELAH_KETUPAT')) {
             header.innerHTML = "🎉 LEVEL CLEARED: Persimpangan Logika Ditemukan!"; header.style.background = '#dcfce7'; header.style.color = '#047857';
-            kritis.innerHTML = "Bagus! Kamu berhasil mengimplementasikan struktur kontrol. Komputer kini bisa 'berpikir' cerdas dan mengambil cabang aksi sesuai kondisi."; kritis.className = "text-benar";
+            kritis.innerHTML = "Bagus! Kamu berhasil mengimplementasikan struktur kontrol. Komputer kini bisa 'berpikir' mengambil cabang keputusan."; kritis.className = "text-benar";
           } else {
             header.innerHTML = "❌ GAME OVER: Struktur Keputusan Hilang!"; header.style.background = '#fee2e2'; header.style.color = '#b91c1c';
-            kritis.innerHTML = "Ups! Kamu tidak menggunakan BELAH KETUPAT! Tanpa simbol ini, program tidak bisa mengambil keputusan atau melakukan perulangan. Klik 'Minta Bantuan' untuk petunjuk."; kritis.className = "text-kritis";
+            kritis.innerHTML = "Ups! Kamu tidak menggunakan BELAH KETUPAT! Program tidak bisa mengambil keputusan atau melakukan looping."; kritis.className = "text-kritis";
           }
-          benar.innerHTML = "Wajib ada [BELAH KETUPAT] di tengah alur (Contoh: Apakah Hujan?), yang akan mengeksekusi [PERSEGI] yang berbeda berdasarkan jawabannya.";
+          benar.innerHTML = "Wajib ada [BELAH KETUPAT] di tengah alur yang akan mengeksekusi [PERSEGI] berdasarkan jawabannya.";
         }
         panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
       } catch(err) { alert(err.message); }
     }
 
-    /* === FITUR 2: LITERASI & ETIKA (6 KASUS, 4 OPSI, FIX GAMBAR) === */
+    /* === FITUR 2: LITERASI & ETIKA KECERDASAN ARTIFISIAL === */
     function setEtikaLvl(lvl, btn) {
       document.querySelectorAll('#tab-etika .lvl-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active');
       currentEtikaLvl = lvl; document.getElementById('eval-et').style.display = 'none';
@@ -336,7 +423,6 @@
       const media = document.getElementById('et-media'); const opsi = document.getElementById('et-opsi');
       media.style.display = 'block';
 
-      // Fallback Gambar jika Unsplash lambat: onerror="this.src='https://via.placeholder.com/800x400?text=Gambar+Edukasi'"
       if(lvl === 1) {
         judul.innerText = "Level 1: Literasi Digital (Phishing & Hoaks)";
         media.innerHTML = `<img src="https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=800&q=80" alt="Cybersecurity" onerror="this.src='https://via.placeholder.com/800x400?text=Awas+Phishing!'">`;
@@ -354,13 +440,13 @@
         opsi.innerHTML = `
           <button class="case-btn" onclick="jawabEtika('salah', 'A. Screenshot fotonya untuk disimpan buat bahan candaan di kemudian hari.', 'Menyimpan data sensitif orang lain tanpa izin juga termasuk pelanggaran etika digital.')">A. Screenshot fotonya untuk disimpan buat bahan candaan di kemudian hari.</button>
           <button class="case-btn" onclick="jawabEtika('salah', 'B. Beri komentar pujian saja karena fotonya bagus.', 'Membiarkan teman dalam bahaya pencurian identitas bukanlah sikap warga digital yang baik.')">B. Beri komentar pujian saja karena fotonya bagus.</button>
-          <button class="case-btn" onclick="jawabEtika('benar', 'C. Segera DM (Pesan Pribadi) temanmu untuk menghapusnya karena rawan pencurian data.', 'Sangat bijak! Melindungi privasi diri sendiri dan orang lain adalah hal utama dalam berinternet.')">C. Segera DM (Pesan Pribadi) temanmu untuk menghapusnya karena rawan pencurian data.</button>
+          <button class="case-btn" onclick="jawabEtika('benar', 'C. Segera DM temanmu untuk menghapusnya karena rawan pencurian data.', 'Sangat bijak! Melindungi privasi diri sendiri dan orang lain adalah hal utama dalam berinternet.')">C. Segera DM temanmu untuk menghapusnya karena rawan pencurian data.</button>
           <button class="case-btn" onclick="jawabEtika('salah', 'D. Laporkan akunnya agar diblokir oleh pihak Instagram.', 'Melaporkan akun secara langsung itu berlebihan, lebih baik ingatkan temanmu secara personal terlebih dahulu.')">D. Laporkan akunnya agar diblokir oleh pihak Instagram.</button>
         `;
       } else if (lvl === 3) {
         judul.innerText = "Level 3: Etika Kecerdasan Artifisial (Manipulasi Deepfake Video)";
         media.innerHTML = `<iframe src="https://www.youtube.com/embed/gLoI9hAX9dw?rel=0" allowfullscreen></iframe>`;
-        desc.innerHTML = "<b>Skenario Video:</b> Beredar video seorang tokoh publik/Kepala Sekolah sedang mengatakan hal provokatif. Namun jika diperhatikan, gerak bibir dan ekspresinya sangat kaku seperti editan AI (Deepfake).";
+        desc.innerHTML = "<b>Skenario Video:</b> Beredar video seorang tokoh publik sedang mengatakan hal provokatif. Namun jika diperhatikan, gerak bibir dan ekspresinya sangat kaku seperti editan AI (Deepfake).";
         opsi.innerHTML = `
           <button class="case-btn" onclick="jawabEtika('salah', 'A. Emosi dan ikut menyebarkannya agar cepat viral.', 'Menyebar video palsu sama dengan menebar fitnah dan dapat dijerat UU ITE.')">A. Emosi dan ikut menyebarkannya agar cepat viral.</button>
           <button class="case-btn" onclick="jawabEtika('benar', 'B. Menganalisis kejanggalan video (Fact-Check) dan mengingatkan orang lain bahwa itu buatan AI.', 'Kritis! Kamu mampu mengidentifikasi artefak (kecacatan editan) pada manipulasi AI tingkat tinggi.')">B. Menganalisis kejanggalan video (Fact-Check) dan mengingatkan orang lain bahwa itu buatan AI.</button>
@@ -370,7 +456,7 @@
       } else if (lvl === 4) {
         judul.innerText = "Level 4: Etika Kecerdasan Artifisial (Kloning Suara AI / Voice Scam)";
         media.innerHTML = `<img src="https://images.unsplash.com/photo-1528747045269-390fe33c19f2?auto=format&fit=crop&w=800&q=80" alt="Scam Call" onerror="this.src='https://via.placeholder.com/800x400?text=Voice+Phishing'">`;
-        desc.innerHTML = "<b>Skenario:</b> Kamu ditelpon nomor tak dikenal. Suaranya *sangat mirip* dengan anggota keluargamu (Ibu/Ayah) yang menangis dan meminta segera ditransfer uang karena kecelakaan.";
+        desc.innerHTML = "<b>Skenario:</b> Kamu ditelpon nomor tak dikenal. Suaranya *sangat mirip* dengan anggota keluargamu yang menangis dan meminta segera ditransfer uang karena kecelakaan.";
         opsi.innerHTML = `
           <button class="case-btn" onclick="jawabEtika('salah', 'A. Panik dan langsung berlari ke ATM untuk mentransfer uang.', 'Kepanikan adalah senjata utama penipu. Voice Cloning AI bisa meniru suara siapa saja hanya dari rekaman suara 3 detik.')">A. Panik dan langsung berlari ke ATM untuk mentransfer uang.</button>
           <button class="case-btn" onclick="jawabEtika('benar', 'B. Tutup teleponnya sejenak, lalu hubungi nomor ASLI keluargamu untuk memastikan keadaannya.', 'Tindakan yang luar biasa logis! Melakukan konfirmasi silang (Cross-check) mematahkan skenario manipulasi psikologis penipu.')">B. Tutup teleponnya sejenak, lalu hubungi nomor ASLI keluargamu untuk memastikan keadaannya.</button>
@@ -378,23 +464,23 @@
           <button class="case-btn" onclick="jawabEtika('salah', 'D. Terus mengajak ngobrol agar pulsa penipu habis.', 'Berbahaya! Suara aslimu bisa direkam balik oleh mereka untuk membuat Voice Cloning baru atas namamu.')">D. Terus mengajak ngobrol agar pulsa penipu habis.</button>
         `;
       } else if (lvl === 5) {
-        judul.innerText = "Level 5: Etika Penggunaan AI Generatif (Plagiarisme ChatGPT)";
+        judul.innerText = "Level 5: Etika Penggunaan AI Generatif (Plagiarisme)";
         media.innerHTML = `<img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80" alt="AI Chat" onerror="this.src='https://via.placeholder.com/800x400?text=ChatGPT+Ethics'">`;
-        desc.innerHTML = "<b>Skenario:</b> Guru memberikan tugas membuat esai tentang pengalaman pribadimu selama liburan. Kamu sedang malas mengetik.";
+        desc.innerHTML = "<b>Skenario:</b> Guru memberikan tugas membuat esai tentang pengalaman pribadimu. Kamu sedang malas mengetik.";
         opsi.innerHTML = `
           <button class="case-btn" onclick="jawabEtika('salah', 'A. Menyuruh ChatGPT menuliskannya dari awal sampai akhir dan langsung mengumpulkannya.', 'Ini adalah Plagiarisme Akademik. Kamu membohongi diri sendiri dengan menggunakan mesin untuk menciptakan pengalaman palsu.')">A. Menyuruh ChatGPT menuliskannya dari awal sampai akhir dan langsung mengumpulkannya.</button>
-          <button class="case-btn" onclick="jawabEtika('benar', 'B. Menggunakan ChatGPT hanya untuk mencari ide kerangka tulisan, lalu mengetik isi ceritanya dengan bahasa sendiri.', 'Sangat beretika! AI adalah alat bantu (Co-pilot), bukan pengganti nalar dan kejujuran manusia.')">B. Menggunakan ChatGPT hanya untuk mencari ide kerangka tulisan, lalu mengetik isi ceritanya dengan bahasa sendiri.</button>
+          <button class="case-btn" onclick="jawabEtika('benar', 'B. Menggunakan ChatGPT hanya untuk mencari ide kerangka tulisan, lalu mengetik ceritanya sendiri.', 'Sangat beretika! AI adalah alat bantu (Co-pilot), bukan pengganti nalar dan kejujuran manusia.')">B. Menggunakan ChatGPT hanya untuk mencari ide kerangka tulisan, lalu mengetik ceritanya sendiri.</button>
           <button class="case-btn" onclick="jawabEtika('salah', 'C. Menyuruh AI membuatnya, lalu menyalahkan AI jika nilainya jelek.', 'Manusia adalah penanggung jawab tertinggi (Human in the loop), bukan mesin.')">C. Menyuruh AI membuatnya, lalu menyalahkan AI jika nilainya jelek.</button>
           <button class="case-btn" onclick="jawabEtika('salah', 'D. Membayar teman untuk mengerjakan tugas tersebut.', 'Ini sama saja dengan berbuat curang dan tidak mengasah kemampuan literasimu.')">D. Membayar teman untuk mengerjakan tugas tersebut.</button>
         `;
       } else if (lvl === 6) {
         judul.innerText = "Level 6: Keamanan Data & Sistem Jaringan (IoT)";
         media.innerHTML = `<iframe src="https://www.youtube.com/embed/z5nc9MDbvkw?rel=0" allowfullscreen></iframe>`;
-        desc.innerHTML = "<b>Skenario Video:</b> Kamu merakit alat sistem cerdas IoT di bengkel sekolah. Sistem memancarkan data biometrik (sidik jari) ke server tanpa menggunakan sandi keamanan (enkripsi) di jaringan WiFi publik.";
+        desc.innerHTML = "<b>Skenario Video:</b> Kamu merakit alat sistem cerdas IoT di bengkel sekolah. Sistem memancarkan data biometrik (sidik jari) ke server tanpa menggunakan sandi keamanan (enkripsi).";
         opsi.innerHTML = `
           <button class="case-btn" onclick="jawabEtika('salah', 'A. Biarkan saja, IoT cuma alat mainan sekolah.', 'Alat sekolah sekalipun jika merekam biometrik siswa asli harus diperlakukan sebagai data rahasia.')">A. Biarkan saja, IoT cuma alat mainan sekolah.</button>
           <button class="case-btn" onclick="jawabEtika('benar', 'B. Segera terapkan Enkripsi End-to-End karena data bisa dicegat (di-hack) oleh pihak luar.', 'Pola pikir Cybersecurity tingkat lanjut! Tanggung jawab programmer adalah menjamin kerahasiaan data.')">B. Segera terapkan Enkripsi End-to-End karena data bisa dicegat (di-hack) oleh pihak luar.</button>
-          <button class="case-btn" onclick="jawabEtika('salah', 'C. Cukup sembunyikan alatnya agar tidak terlihat orang.', 'Menyembunyikan alat secara fisik (Hardware) tidak mencegah peretas (Hacker) menyadap sinyal WiFi (Network/Software).')">C. Cukup sembunyikan alatnya agar tidak terlihat orang.</button>
+          <button class="case-btn" onclick="jawabEtika('salah', 'C. Cukup sembunyikan alatnya agar tidak terlihat orang.', 'Menyembunyikan alat secara fisik (Hardware) tidak mencegah peretas (Hacker) menyadap sinyal WiFi (Network).')">C. Cukup sembunyikan alatnya agar tidak terlihat orang.</button>
           <button class="case-btn" onclick="jawabEtika('salah', 'D. Matikan alat setiap malam hari.', 'Peretasan data bisa terjadi kapan saja, detik di mana alat itu dihidupkan tanpa pengaman.')">D. Matikan alat setiap malam hari.</button>
         `;
       }
@@ -447,10 +533,10 @@
       document.getElementById('eval-kd').style.display = 'none'; 
       const box = document.getElementById('kd-materi');
       
-      if(lvl === 1) box.innerHTML = `<h3>Level 1: Deklarasi Variabel & Output</h3><div class="materi-content"><b>Misi:</b> Komputer butuh wadah data. Buat variabel <code>nilai</code> dengan angka <b>100</b>, lalu cetak variabel tersebut.</div>`;
-      else if(lvl === 2) box.innerHTML = `<h3>Level 2: Logika Kondisi (IF)</h3><div class="materi-content"><b>Misi:</b> Komputer bisa mengambil keputusan. Susun program: JIKA nilai = 100, MAKA Cetak Teks "Lulus".</div>`;
-      else if(lvl === 3) box.innerHTML = `<h3>Level 3: Perulangan (Looping)</h3><div class="materi-content"><b>Misi:</b> Komputer hebat dalam mengulang perintah. Buatlah program yang mencetak peringatan "Bunyikan Alarm!" sebanyak 3 kali secara otomatis.</div>`;
-      else if(lvl === 4) box.innerHTML = `<h3>Level 4: Simulasi Sensor Sistem Cerdas (IoT)</h3><div class="materi-content"><b>Misi:</b> JIKA (Sensor Mendeteksi = Kapasitas Penuh), MAKA lakukan perintah mencetak "Kirim Data ke Cloud!".</div>`;
+      if(lvl === 1) box.innerHTML = `<h3>Praktik Level 1: Deklarasi Variabel</h3><div class="materi-content"><b>Misi:</b> Komputer butuh wadah data. Buat variabel <code>nilai</code> dengan angka <b>100</b>, lalu cetak variabel tersebut.</div>`;
+      else if(lvl === 2) box.innerHTML = `<h3>Praktik Level 2: Logika Kondisi (IF)</h3><div class="materi-content"><b>Misi:</b> Komputer bisa mengambil keputusan. Susun program: JIKA nilai = 100, MAKA Cetak Teks "Lulus".</div>`;
+      else if(lvl === 3) box.innerHTML = `<h3>Praktik Level 3: Perulangan (Looping)</h3><div class="materi-content"><b>Misi:</b> Komputer hebat dalam mengulang perintah. Buatlah program yang mencetak peringatan "Bunyikan Alarm!" sebanyak 3 kali secara otomatis.</div>`;
+      else if(lvl === 4) box.innerHTML = `<h3>Praktik Level 4: Simulasi Sensor Sistem Cerdas (IoT)</h3><div class="materi-content"><b>Misi:</b> JIKA (Sensor Mendeteksi = Kapasitas Penuh), MAKA lakukan perintah mencetak "Kirim Data ke Cloud!".</div>`;
       
       workspace.clear();
     }
