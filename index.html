@@ -26,7 +26,7 @@
     .lvl-btn.active { background: #10b981; color: white; transform: scale(1.05);}
 
     /* Desain Panel Materi */
-    .materi-box { background: #f0f9ff; border-left: 5px solid #0ea5e9; padding: 15px; margin-bottom: 20px; border-radius: 5px; }
+    .materi-box { background: #f0f9ff; border-left: 5px solid #0ea5e9; padding: 15px; margin-bottom: 15px; border-radius: 5px; }
     .materi-box h3 { margin: 0 0 10px 0; color: #0369a1; font-size: 1.2rem; border-bottom: 1px solid #bae6fd; padding-bottom: 5px;}
     .materi-content { font-size: 0.95rem; line-height: 1.6; color: #334155; }
     
@@ -37,7 +37,16 @@
     .guide-item { background: white; padding: 10px; border-radius: 5px; border: 1px solid #fef08a; font-size: 0.85rem; }
     .symbol-icon { font-weight: bold; font-size: 1.1rem; margin-right: 5px; display: inline-block; width: 25px; text-align: center;}
 
-    /* MEDIA CONTAINER (VIDEO/FOTO) */
+    /* KOTAK TUTORIAL GAME (BARU) */
+    .tutorial-box { display: flex; background: #1e293b; color: #f8fafc; padding: 15px; border-radius: 8px; margin-bottom: 20px; align-items: center; border-left: 6px solid #10b981; box-shadow: 0 4px 6px rgba(0,0,0,0.15);}
+    .tutorial-avatar { font-size: 2.5rem; margin-right: 15px; background: #334155; padding: 10px; border-radius: 50%; }
+    .tutorial-text { flex-grow: 1; }
+    .tutorial-text h4 { margin: 0 0 5px 0; color: #34d399; font-size: 1.1rem; }
+    .tutorial-text p { margin: 0; font-size: 0.95rem; line-height: 1.5; color: #cbd5e1; }
+    .btn-hint { background: #f59e0b; color: #fff; border: none; padding: 12px 18px; border-radius: 6px; cursor: pointer; font-weight: bold; transition: 0.2s; font-size: 0.9rem;}
+    .btn-hint:hover { background: #d97706; transform: scale(1.05); }
+
+    /* CSS MEDIA ETIKA */
     .media-container { width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 15px; background: #000; display: none; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
     .media-container iframe { width: 100%; aspect-ratio: 16/9; border: none; display: block; }
     .media-container img { width: 100%; height: auto; display: block; max-height: 350px; object-fit: cover;}
@@ -51,12 +60,11 @@
     .btn-run.secondary { background: #3b82f6; width: auto; margin-right: 10px; margin-bottom:10px;}
     .btn-run:hover { opacity: 0.9; }
 
-    /* CSS Etika Kasus */
     .btn-group-case { display: flex; flex-direction: column; gap: 10px; }
     .case-btn { background: #f8fafc; color: #0f172a; border: 2px solid #cbd5e1; padding: 15px; border-radius: 6px; cursor: pointer; font-weight: 600; text-align: left; font-size: 1rem; transition: 0.2s;}
     .case-btn:hover { background: #e2e8f0; }
 
-    /* CSS PANEL EVALUASI KRITIS */
+    /* EVALUASI */
     .eval-panel { display: none; margin-top: 20px; border-radius: 8px; overflow: hidden; border: 2px solid #cbd5e1; animation: fadeIn 0.5s;}
     .eval-header { padding: 12px 15px; font-weight: bold; font-size: 1.1rem; display: flex; align-items: center; gap: 10px;}
     .eval-body { padding: 15px; background: #fff; line-height: 1.6;}
@@ -81,13 +89,14 @@
   </div>
 
   <div id="tab-flowchart" class="content-section active">
+    
     <div class="guide-box">
       <h4>📌 Panduan Penggunaan Simbol Flowchart Baku</h4>
       <div class="guide-grid">
-        <div class="guide-item"><span class="symbol-icon" style="color:#e11d48;">⬭</span><b>OVAL</b><br>Menandakan titik <i>Mulai</i> dan <i>Selesai</i> program.</div>
-        <div class="guide-item"><span class="symbol-icon" style="color:#9333ea;">▱</span><b>JAJARGENJANG</b><br>Menerima data (Input) atau menampilkan (Output).</div>
-        <div class="guide-item"><span class="symbol-icon" style="color:#2563eb;">▭</span><b>PERSEGI</b><br>Menunjukkan tindakan, rumus, atau komputasi.</div>
-        <div class="guide-item"><span class="symbol-icon" style="color:#d97706;">⬦</span><b>BELAH KETUPAT</b><br>Keputusan bersyarat. Percabangan <i>Ya / Tidak</i>.</div>
+        <div class="guide-item"><span class="symbol-icon" style="color:#e11d48;">⬭</span><b>OVAL</b><br>Titik <i>Mulai</i> dan <i>Selesai</i> program.</div>
+        <div class="guide-item"><span class="symbol-icon" style="color:#9333ea;">▱</span><b>JAJARGENJANG</b><br>Menerima data (Input) / Output.</div>
+        <div class="guide-item"><span class="symbol-icon" style="color:#2563eb;">▭</span><b>PERSEGI</b><br>Menunjukkan tindakan/proses.</div>
+        <div class="guide-item"><span class="symbol-icon" style="color:#d97706;">⬦</span><b>BELAH KETUPAT</b><br>Keputusan bersyarat (Ya / Tidak).</div>
       </div>
     </div>
 
@@ -98,9 +107,19 @@
     </div>
 
     <div class="materi-box" id="fc-materi"></div>
+
+    <div class="tutorial-box">
+      <div class="tutorial-avatar">🤖</div>
+      <div class="tutorial-text">
+        <h4 id="tutor-title">Sistem Pemandu Misi Aktif!</h4>
+        <p id="tutor-msg">Halo! Aku akan memandumu menyelesaikan kasus algoritma ini. Jika kamu merasa kesulitan menyusun simbolnya, klik tombol Bantuan di samping kanan ya!</p>
+      </div>
+      <button class="btn-hint" onclick="mintaBantuan()">💡 Minta Bantuan</button>
+    </div>
+    
     <div id="flowchart-builder"></div>
     <button class="btn-run secondary" onclick="tambahLangkah()">+ Tambah Baris Langkah</button>
-    <button class="btn-run secondary" style="background:#f59e0b;" onclick="resetFlowchart()">🔄 Reset Papan</button>
+    <button class="btn-run secondary" style="background:#ef4444;" onclick="resetFlowchart()">🔄 Reset Papan</button>
     <button class="btn-run" onclick="ujiFlowchart()">▶ UJI DAN EVALUASI FLOWCHART</button>
 
     <div id="eval-fc" class="eval-panel">
@@ -186,17 +205,48 @@
       document.getElementById(tabId).classList.add('active');
       btn.classList.add('active');
       
-      // Hentikan video jika pengguna pindah tab agar tidak bocor suaranya
       document.getElementById('et-media').innerHTML = ''; 
-      if(tabId === 'tab-etika') {
-         // Render ulang media saat kembali ke tab etika
-         setEtikaLvl(currentEtikaLvl, document.querySelector('#tab-etika .lvl-btn.active'));
-      }
+      if(tabId === 'tab-etika') { setEtikaLvl(currentEtikaLvl, document.querySelector('#tab-etika .lvl-btn.active')); }
       if(tabId === 'tab-koding') { Blockly.svgResize(workspace); }
     }
 
-    /* === FITUR 1: FLOWCHART === */
+    /* === FITUR 1: FLOWCHART & SISTEM TUTORIAL === */
     let stepCount = 0;
+    
+    // Data Database Bantuan (Hints) untuk game tutorial
+    const tutorialHints = {
+      1: [
+        "Langkah 1: Sama seperti menyalakan mesin, awali flowchart-mu dengan simbol OVAL dan ketik 'Mulai'.",
+        "Langkah 2: Komputer butuh data awal. Gunakan JAJARGENJANG untuk 'Siapkan Teh dan Air'.",
+        "Langkah 3: Waktunya beraksi! Gunakan simbol PERSEGI karena ini adalah proses 'Menyeduh Teh'.",
+        "Langkah 4: Bagus! Sekarang akhiri programmu dengan simbol OVAL lagi dan ketik 'Selesai'."
+      ],
+      2: [
+        "Langkah 1: Mulailah misi ini dengan OVAL (Mulai).",
+        "Langkah 2: Ambil data cuaca dari luar menggunakan JAJARGENJANG (Cek Cuaca).",
+        "Langkah 3: Peringatan Persimpangan! Gunakan BELAH KETUPAT untuk bertanya 'Apakah Hujan Turun?'. Ingat, komputer hanya butuh kondisi YA atau TIDAK.",
+        "Langkah 4: Jika Ya, lakukan aksi PERSEGI 'Pakai Payung'. Tutup misimu dengan OVAL (Selesai)."
+      ],
+      3: [
+        "Langkah 1: Jangan lupa, semua program berawal dari OVAL (Mulai).",
+        "Langkah 2: Ini adalah tantangan Perulangan (Loop). Kamu harus mengecek dulu sebelum berlari. Gunakan BELAH KETUPAT dan ketik 'Apakah sudah 3 Putaran?'.",
+        "Langkah 3: Jika jawabannya 'TIDAK', arahkan ke proses PERSEGI 'Lari 1 Putaran'. Jika 'YA', arahkan ke OVAL 'Selesai'!",
+        "Langkah 4: Susun dengan benar dan klik Uji Coba untuk melihat apakah logikamu terjebak loop tanpa akhir!"
+      ]
+    };
+    let currentHintIndex = 0;
+
+    function mintaBantuan() {
+      const hintArray = tutorialHints[currentFlowchartLvl];
+      const msgBox = document.getElementById('tutor-msg');
+      if (currentHintIndex < hintArray.length) {
+        msgBox.innerHTML = `<b>Pemandu:</b> ${hintArray[currentHintIndex]}`;
+        currentHintIndex++;
+      } else {
+        msgBox.innerHTML = "<b>Pemandu:</b> Semua petunjuk sudah aku berikan. Sekarang giliranmu menyusun dan menguji logikanya ya! Semangat!";
+      }
+    }
+
     function tambahLangkah() {
       stepCount++;
       const builder = document.getElementById('flowchart-builder');
@@ -217,6 +267,7 @@
     
     function resetFlowchart() {
       document.getElementById('flowchart-builder').innerHTML = ''; stepCount = 0;
+      currentHintIndex = 0; document.getElementById('tutor-msg').innerText = "Halo! Klik tombol Bantuan di samping kanan jika kamu bingung menyusun simbolnya.";
       tambahLangkah(); tambahLangkah(); tambahLangkah(); document.getElementById('eval-fc').style.display = 'none';
     }
 
@@ -243,20 +294,20 @@
 
       if (currentFlowchartLvl === 1) {
         if (arrSimbol[0] === 'OVAL' && arrSimbol[arrSimbol.length-1] === 'OVAL' && arrSimbol.includes('PERSEGI') && arrSimbol.includes('JAJARGENJANG')) {
-          header.innerHTML = "✅ Alur Logika Diterima!"; header.style.background = '#dcfce7'; header.style.color = '#047857';
-          kritis.innerHTML = "Hebat! Kamu telah memahami fungsi spesifik setiap simbol. OVAL untuk terminator, JAJARGENJANG untuk bahan/teh, dan PERSEGI untuk tindakan (menyeduh)."; kritis.className = "text-benar";
+          header.innerHTML = "🎉 LEVEL CLEARED: Alur Logika Diterima!"; header.style.background = '#dcfce7'; header.style.color = '#047857';
+          kritis.innerHTML = "Luar Biasa! Kamu telah memahami fungsi spesifik setiap simbol. OVAL untuk batas program, JAJARGENJANG untuk input bahan, dan PERSEGI untuk mengeksekusi tindakan."; kritis.className = "text-benar";
         } else {
-          header.innerHTML = "❌ Terjadi Kesalahan Simbol"; header.style.background = '#fee2e2'; header.style.color = '#b91c1c';
-          kritis.innerHTML = "Logikamu keliru. Pastikan baris pertama dan terakhir adalah OVAL. Serta pastikan kamu membedakan Input Bahan (Jajargenjang) dan Proses Memasak (Persegi)."; kritis.className = "text-kritis";
+          header.innerHTML = "❌ GAME OVER: Terjadi Kesalahan Simbol"; header.style.background = '#fee2e2'; header.style.color = '#b91c1c';
+          kritis.innerHTML = "Logikamu keliru. Coba klik tombol 'Minta Bantuan'. Pastikan program diawali/diakhiri OVAL, dan bedakan antara Jajargenjang dengan Persegi."; kritis.className = "text-kritis";
         }
         benar.innerHTML = "1. [OVAL] Mulai<br>2. [JAJARGENJANG] Siapkan Teh & Air (Input)<br>3. [PERSEGI] Seduh Teh (Proses)<br>4. [OVAL] Selesai";
       } else if (currentFlowchartLvl === 2 || currentFlowchartLvl === 3) {
         if (arrSimbol.includes('BELAH_KETUPAT')) {
-          header.innerHTML = "✅ Persimpangan Logika Ditemukan!"; header.style.background = '#dcfce7'; header.style.color = '#047857';
-          kritis.innerHTML = "Bagus! Kamu berhasil mengimplementasikan struktur kontrol. Komputer kini bisa 'berpikir' dan mengambil cabang aksi sesuai kondisi (Ya/Tidak)."; kritis.className = "text-benar";
+          header.innerHTML = "🎉 LEVEL CLEARED: Persimpangan Logika Ditemukan!"; header.style.background = '#dcfce7'; header.style.color = '#047857';
+          kritis.innerHTML = "Bagus! Kamu berhasil mengimplementasikan struktur kontrol. Komputer kini bisa 'berpikir' cerdas dan mengambil cabang aksi sesuai kondisi."; kritis.className = "text-benar";
         } else {
-          header.innerHTML = "❌ Struktur Keputusan Hilang!"; header.style.background = '#fee2e2'; header.style.color = '#b91c1c';
-          kritis.innerHTML = "Kamu tidak menggunakan BELAH KETUPAT! Tanpa simbol ini, program akan terus berjalan buta tanpa bisa mengambil keputusan bersyarat."; kritis.className = "text-kritis";
+          header.innerHTML = "❌ GAME OVER: Struktur Keputusan Hilang!"; header.style.background = '#fee2e2'; header.style.color = '#b91c1c';
+          kritis.innerHTML = "Ups! Kamu tidak menggunakan BELAH KETUPAT! Tanpa simbol ini, program tidak bisa mengambil keputusan atau melakukan perulangan. Klik 'Minta Bantuan' untuk petunjuk."; kritis.className = "text-kritis";
         }
         benar.innerHTML = "Wajib ada [BELAH KETUPAT] di tengah alur (Contoh: Apakah Hujan?), yang akan mengeksekusi [PERSEGI] yang berbeda berdasarkan jawabannya.";
       }
@@ -266,49 +317,41 @@
     function setEtikaLvl(lvl, btn) {
       document.querySelectorAll('#tab-etika .lvl-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active');
       currentEtikaLvl = lvl; document.getElementById('eval-et').style.display = 'none';
-      
-      const judul = document.getElementById('et-judul');
-      const desc = document.getElementById('et-desc');
-      const media = document.getElementById('et-media');
-      const opsi = document.getElementById('et-opsi');
-
+      const judul = document.getElementById('et-judul'); const desc = document.getElementById('et-desc');
+      const media = document.getElementById('et-media'); const opsi = document.getElementById('et-opsi');
       media.style.display = 'block';
 
       if(lvl === 1) {
         judul.innerText = "Level 1: Jebakan Link (Phishing & Hoaks)";
-        // Foto ilustrasi phishing/hoaks WhatsApp
         media.innerHTML = `<img src="https://images.unsplash.com/photo-1614064641913-6b1e42c262a5?auto=format&fit=crop&w=800&q=80" alt="Ilustrasi Phishing Siber">`;
-        desc.innerHTML = "<b>Skenario:</b> Di grup WA kelas, seseorang membagikan link: <i>'Bantuan Kuota Gratis 50GB dari Pemerintah, klik link ini dan masukkan nomor HP & Password Sosial Mediamu!'</i> Anggota grup mulai heboh.";
+        desc.innerHTML = "<b>Skenario:</b> Di grup WA kelas, seseorang membagikan link: <i>'Bantuan Kuota Gratis 50GB, klik link ini dan masukkan nomor HP & Password Sosial Mediamu!'</i> Anggota grup heboh.";
         opsi.innerHTML = `
-          <button class="case-btn" onclick="jawabEtika('salah1', 'A. Langsung Forward (Teruskan) postingan itu ke grup keluarga dan klik linknya agar dapat kuota.')">A. Langsung Forward postingan itu ke grup keluarga dan klik linknya agar dapat kuota.</button>
-          <button class="case-btn" onclick="jawabEtika('benar', 'B. Mengabaikan link, tidak meneruskannya, lalu mengingatkan di grup bahwa itu penipuan (Phishing).')">B. Mengabaikan link, tidak meneruskannya, lalu mengingatkan di grup bahwa itu penipuan (Phishing).</button>
+          <button class="case-btn" onclick="jawabEtika('salah1', 'A. Langsung Forward postingan itu dan klik linknya.')">A. Langsung Forward postingan itu dan klik linknya.</button>
+          <button class="case-btn" onclick="jawabEtika('benar', 'B. Mengabaikan link dan mengingatkan grup bahwa itu Phishing.')">B. Mengabaikan link dan mengingatkan grup bahwa itu Phishing.</button>
         `;
       } else if (lvl === 2) {
         judul.innerText = "Level 2: Oversharing (Jejak Digital)";
-        // Foto ilustrasi main sosmed
         media.innerHTML = `<img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80" alt="Ilustrasi Media Sosial">`;
-        desc.innerHTML = "<b>Skenario:</b> Temanmu baru saja mendapat KTP/Kartu Pelajar. Saking senangnya, dia memfoto kartu tersebut (terlihat jelas NIK/NIS, tanggal lahir, dan alamat) lalu mengunggahnya ke Story dengan caption 'Akhirnya diakui negara! 🎉'";
+        desc.innerHTML = "<b>Skenario:</b> Temanmu mendapat KTP/Kartu Pelajar dan memfotonya secara jelas lalu mengunggahnya ke medsos. Apa tindakanmu?";
         opsi.innerHTML = `
-          <button class="case-btn" onclick="jawabEtika('benar', 'A. Segera DM temanmu untuk segera menghapus atau menyensor data sensitif tersebut sebelum disalahgunakan.')">A. Segera DM temanmu untuk segera menghapus atau menyensor data sensitif tersebut.</button>
-          <button class="case-btn" onclick="jawabEtika('salah1', 'B. Memberikan komentar pujian dan tidak mempedulikan fotonya karena itu akun pribadinya.')">B. Memberikan komentar pujian dan tidak mempedulikan fotonya karena itu akun pribadinya.</button>
+          <button class="case-btn" onclick="jawabEtika('benar', 'A. Segera DM temanmu untuk menghapus data sensitif tersebut.')">A. Segera DM temanmu untuk menghapus data sensitif tersebut.</button>
+          <button class="case-btn" onclick="jawabEtika('salah1', 'B. Memberikan komentar pujian saja.')">B. Memberikan komentar pujian saja.</button>
         `;
       } else if (lvl === 3) {
         judul.innerText = "Level 3: Manipulasi Visual (Deepfake AI)";
-        // Video edukasi Deepfake (Embed YouTube)
         media.innerHTML = `<iframe src="https://www.youtube.com/embed/gLoI9hAX9dw?rel=0" allowfullscreen></iframe>`;
-        desc.innerHTML = "<b>Skenario Tonton Video Di Atas:</b> Beredar video tokoh publik atau Kepala Sekolah mengatakan hal yang provokatif. Tapi gerak bibir dan kedipan matanya sangat kaku seperti diedit oleh AI generatif (Deepfake).";
+        desc.innerHTML = "<b>Skenario Video:</b> Beredar video tokoh publik memprovokasi, tapi gerak bibir/matanya diedit kaku oleh AI (Deepfake).";
         opsi.innerHTML = `
-          <button class="case-btn" onclick="jawabEtika('salah1', 'A. Terpancing emosi dan langsung membagikan video itu sebagai bahan amarah di sosial media.')">A. Terpancing emosi dan langsung membagikan video itu sebagai bahan amarah di sosial media.</button>
-          <button class="case-btn" onclick="jawabEtika('benar', 'B. Menganalisis kejanggalan video, menyadari itu manipulasi AI, dan mengingatkan orang lain untuk tidak menyebar fitnah.')">B. Menganalisis kejanggalan video, menyadari itu manipulasi AI, dan mengingatkan orang lain.</button>
+          <button class="case-btn" onclick="jawabEtika('salah1', 'A. Emosi dan membagikannya ke sosial media.')">A. Emosi dan membagikannya ke sosial media.</button>
+          <button class="case-btn" onclick="jawabEtika('benar', 'B. Menganalisis kejanggalan video (Fact-Check) dan tidak menyebarkannya.')">B. Menganalisis kejanggalan video (Fact-Check) dan tidak menyebarkannya.</button>
         `;
       } else if (lvl === 4) {
-        judul.innerText = "Level 4: Keamanan Data & Privasi IoT";
-        // Video Edukasi Keamanan Cyber / IoT
+        judul.innerText = "Level 4: Keamanan Data IoT";
         media.innerHTML = `<iframe src="https://www.youtube.com/embed/z5nc9MDbvkw?rel=0" allowfullscreen></iframe>`;
-        desc.innerHTML = "<b>Skenario Tonton Video Di Atas:</b> Kamu sedang merakit alat presensi sidik jari WiFi. Karena buru-buru, kamu membuat sistem yang memancarkan data biometrik (sidik jari) siswa ke server tanpa sandi keamanan (enkripsi). Apa bahaya tertingginya?";
+        desc.innerHTML = "<b>Skenario Video:</b> Kamu merakit alat IoT WiFi. Sistem memancarkan data sidik jari ke server tanpa sandi enkripsi. Bahayanya?";
         opsi.innerHTML = `
-          <button class="case-btn" onclick="jawabEtika('salah1', 'A. Alat mikrokontrolernya bisa cepat panas atau rusak karena kepenuhan memori.')">A. Alat mikrokontrolernya bisa cepat panas atau rusak karena kepenuhan memori.</button>
-          <button class="case-btn" onclick="jawabEtika('benar', 'B. Data biometrik siswa sangat sensitif dan bisa dicegat (di-hack) di tengah jaringan oleh peretas.')">B. Data biometrik siswa sangat sensitif dan bisa dicegat (di-hack) di tengah jaringan oleh peretas.</button>
+          <button class="case-btn" onclick="jawabEtika('salah1', 'A. Alat mikrokontrolernya bisa cepat rusak/panas.')">A. Alat mikrokontrolernya bisa cepat rusak/panas.</button>
+          <button class="case-btn" onclick="jawabEtika('benar', 'B. Data biometrik bisa dicegat (di-hack) di tengah jaringan.')">B. Data biometrik bisa dicegat (di-hack) di tengah jaringan.</button>
         `;
       }
     }
@@ -318,45 +361,14 @@
       const kritis = document.getElementById('et-kritis'); const benar = document.getElementById('et-benar');
       panel.style.display = 'block';
 
-      if(currentEtikaLvl === 1) {
-        if(status === 'salah1') {
-          header.innerHTML = "❌ Kamu Terjebak Teknik Phishing!"; header.style.background = '#fee2e2'; header.style.color = '#b91c1c';
-          kritis.innerHTML = `Pilihanmu: <i>${teksOpsi}</i><br><br><b>Dampak Berbahaya:</b> Niat baik tanpa validasi berakibat fatal. Mengklik tautan misterius adalah jalan masuknya <i>malware</i>. Jika kamu meneruskannya (Forward), kamu membahayakan seluruh kontak di HP-mu.`; kritis.className = "text-kritis";
-        } else {
-          header.innerHTML = "✅ Sangat Kritis & Waspada!"; header.style.background = '#dcfce7'; header.style.color = '#047857';
-          kritis.innerHTML = `Pilihanmu: <i>${teksOpsi}</i><br><br><b>Evaluasi:</b> Sangat tepat! Kamu menerapkan prinsip <b>"Saring Sebelum Sharing"</b>. Tidak mudah tergiur iming-iming gratis adalah pertahanan siber terbaik.`; kritis.className = "text-benar";
-        }
-        benar.innerHTML = "B. Abaikan link, laporkan sebagai spam. Jangan pernah menyerahkan Password pada situs tidak resmi.";
-      } 
-      else if(currentEtikaLvl === 2) {
-        if(status === 'salah1') {
-          header.innerHTML = "❌ Pembiaran yang Berbahaya!"; header.style.background = '#fee2e2'; header.style.color = '#b91c1c';
-          kritis.innerHTML = `Pilihanmu: <i>${teksOpsi}</i><br><br><b>Dampak Berbahaya:</b> Data pribadi (NIK, Nama Ibu, Tgl Lahir) yang terunggah di medsos sering dicuri oleh kejahatan siber untuk mendaftar Pinjaman Online (Pinjol) palsu atas nama korban.`; kritis.className = "text-kritis";
-        } else {
-          header.innerHTML = "✅ Pahlawan Privasi Digital!"; header.style.background = '#dcfce7'; header.style.color = '#047857';
-          kritis.innerHTML = `Pilihanmu: <i>${teksOpsi}</i><br><br><b>Evaluasi:</b> Kamu paham bahaya <i>Oversharing</i> (berbagi berlebihan). Menegur secara privat (DM) menjaga perasaannya sambil melindungi keamanan masa depannya.`; kritis.className = "text-benar";
-        }
-        benar.innerHTML = "A. Ingatkan via DM untuk segera menghapus (Take-down) foto demi keamanan data pribadinya.";
-      }
-      else if(currentEtikaLvl === 3) {
-        if(status === 'salah1') {
-          header.innerHTML = "❌ Terjebak Manipulasi Visual AI!"; header.style.background = '#fee2e2'; header.style.color = '#b91c1c';
-          kritis.innerHTML = `Pilihanmu: <i>${teksOpsi}</i><br><br><b>Dampak Berbahaya:</b> Kamu ikut menyebarkan kebohongan. AI generatif sangat canggih dan bisa mengkloning wajah/suara. Membagikannya memicu fitnah massal yang melanggar hukum UU ITE.`; kritis.className = "text-kritis";
-        } else {
-          header.innerHTML = "✅ Analisis Etika AI Sempurna!"; header.style.background = '#dcfce7'; header.style.color = '#047857';
-          kritis.innerHTML = `Pilihanmu: <i>${teksOpsi}</i><br><br><b>Evaluasi:</b> Literasi tinggimu menyelamatkanmu! Kamu tidak tertipu mentah-mentah oleh video karena mampu menganalisis artefak digital (gerak bibir yang kaku/tidak sinkron).`; kritis.className = "text-benar";
-        }
-        benar.innerHTML = "B. Lakukan *Fact-Checking* (Cek Fakta). Jangan percaya 100% pada media di era AI tanpa sumber kredibel.";
-      }
-      else if(currentEtikaLvl === 4) {
-        if(status === 'salah1') {
-          header.innerHTML = "❌ Salah Fokus pada Masalah Utama!"; header.style.background = '#fee2e2'; header.style.color = '#b91c1c';
-          kritis.innerHTML = `Pilihanmu: <i>${teksOpsi}</i><br><br><b>Dampak Berbahaya:</b> Memori sensor penuh hanyalah masalah *Hardware* yang sepele. Membocorkan pola sidik jari siswa ke jaringan publik tanpa sandi adalah kejahatan siber yang fatal!`; kritis.className = "text-kritis";
-        } else {
-          header.innerHTML = "✅ Pola Pikir Cyber-Security!"; header.style.background = '#dcfce7'; header.style.color = '#047857';
-          kritis.innerHTML = `Pilihanmu: <i>${teksOpsi}</i><br><br><b>Evaluasi:</b> Kamu paham Etika Profesi (Programmer). Membuat sistem alat menyala itu mudah, tapi menjaga kerahasiaan aliran data penggunanya (Enkripsi End-to-End) adalah tanggung jawab moral tertinggi.`; kritis.className = "text-benar";
-        }
-        benar.innerHTML = "B. Data rentan dicegat (Man-in-the-Middle Attack). Terapkan protokol HTTPS / Enkripsi pada alat IoT.";
+      if(status === 'salah1') {
+        header.innerHTML = "❌ Analisis Keliru!"; header.style.background = '#fee2e2'; header.style.color = '#b91c1c';
+        kritis.innerHTML = `Tindakanmu: <i>${teksOpsi}</i><br><br><b>Dampak Berbahaya:</b> Pilihan ini sangat rentan terhadap pencurian identitas, penyebaran hoaks (UU ITE), atau pencegatan data (Cybercrime).`; kritis.className = "text-kritis";
+        benar.innerHTML = "Selalu saring informasi, amankan privasi (Enkripsi), dan jangan pernah sebarkan identitas sensitif!";
+      } else {
+        header.innerHTML = "✅ Pemikiran Cerdas & Etis!"; header.style.background = '#dcfce7'; header.style.color = '#047857';
+        kritis.innerHTML = `Tindakanmu: <i>${teksOpsi}</i><br><br><b>Evaluasi:</b> Hebat! Kamu memiliki literasi digital yang tinggi dan mengerti tanggung jawab sebagai masyarakat siber (Cyber Citizen).`; kritis.className = "text-benar";
+        benar.innerHTML = "Tindakan pencegahan, verifikasi fakta (Fact Check), dan privasi data adalah pilihan terbaik.";
       }
     }
 
