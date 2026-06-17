@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Koding & KA - Hub Pembelajaran Terpadu</title>
   
-  <script src="https://unpkg.com/blockly/blockly_compressed.js"></script>
-  <script src="https://unpkg.com/blockly/blocks_compressed.js"></script>
-  <script src="https://unpkg.com/blockly/javascript_compressed.js"></script>
-  <script src="https://unpkg.com/blockly/msg/id.js"></script>
+  <!-- KUNCI VERSI STABIL 8.0.0 AGAR GENERATOR & TOMBOL BERFUNGSI SEMPURNA -->
+  <script src="https://unpkg.com/blockly@8.0.0/blockly_compressed.js"></script>
+  <script src="https://unpkg.com/blockly@8.0.0/blocks_compressed.js"></script>
+  <script src="https://unpkg.com/blockly@8.0.0/javascript_compressed.js"></script>
+  <script src="https://unpkg.com/blockly@8.0.0/msg/id.js"></script>
   
   <style>
     body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; margin: 0; padding: 15px; background-color: #f1f5f9; color: #1e293b; }
@@ -28,6 +29,8 @@
     .level-btn:hover { background: #059669; }
 
     #blocklyArea { height: 50vh; width: 100%; border: 2px solid #94a3b8; border-radius: 8px; background-color: #ffffff; }
+    
+    /* Tombol Eksekusi */
     .btn-action { width: 100%; padding: 15px; background-color: #f59e0b; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1.1rem; font-weight: bold; margin-top: 15px; text-transform: uppercase; transition: 0.2s; box-shadow: 0 4px 6px rgba(245, 158, 11, 0.3); }
     .btn-action:hover { background-color: #d97706; transform: translateY(-2px); }
   </style>
@@ -48,6 +51,7 @@
       <b>Pilih Level Tantangan di bawah ini:</b><br>
       Siswa akan belajar merangkai logika aktivitas mereka sendiri menggunakan simbol baku.
     </div>
+    <!-- Tombol Level Khusus Flowchart -->
     <div class="level-container" id="levelFlowchart" style="display: flex;">
       <button class="level-btn" onclick="setKasus(1)">Level 1: Dasar Lurus</button>
       <button class="level-btn" onclick="setKasus(2)">Level 2: Satu Percabangan</button>
@@ -58,9 +62,11 @@
   
   <div id="blocklyArea"></div>
   
+  <!-- Tombol Eksekusi -->
   <button class="btn-action" onclick="jalankanSimulasi()">▶ UJI COBA ALUR LOGIKA</button>
 
   <xml id="toolbox" style="display: none">
+    <!-- BLOK KOSONG UNTUK DIKETIK BEBAS -->
     <category name="Simbol Flowchart Kosong" colour="#ef4444">
       <block type="flow_mulai"></block>
       <block type="flow_io"></block>
@@ -69,6 +75,7 @@
       <block type="flow_selesai"></block>
     </category>
 
+    <!-- BLOK PRE-FILLED UNTUK KASUS SEHARI-HARI -->
     <category name="Blok Teks Cepat (Kasus Siswa)" colour="#3b82f6">
       <block type="flow_io"><field name="DATA">Lihat Cuaca di Luar Jendela</field></block>
       <block type="flow_keputusan"><field name="KONDISI">Apakah Hujan Turun?</field></block>
@@ -80,6 +87,7 @@
       <block type="flow_proses"><field name="AKSI">Batal Beli / Cari Teman Untuk Pinjam</field></block>
     </category>
 
+    <!-- BLOK UNTUK BABAK SELANJUTNYA -->
     <category name="Kasus Literasi & Etika AI" colour="#8b5cf6">
       <block type="flow_keputusan"><field name="KONDISI">Apakah Pesan / Tautan Ini Hoaks?</field></block>
       <block type="flow_proses"><field name="AKSI">Hapus Pesan & Blokir Pengirim</field></block>
@@ -96,7 +104,9 @@
   </xml>
 
   <script>
-    /* DEFINISI BLOK FLOWCHART */
+    /* ====================================================================
+       DEFINISI BLOK FLOWCHART
+       ==================================================================== */
     Blockly.defineBlocksWithJsonArray([
       { "type": "flow_mulai", "message0": "⬭ OVAL (Mulai) %1", "args0": [{"type": "field_input", "name": "NAMA", "text": "Mulai"}], "nextStatement": null, "colour": 345 },
       { "type": "flow_io", "message0": "▱ JAJARGENJANG (I/O) %1", "args0": [{"type": "field_input", "name": "DATA", "text": "Ketik Input/Output..."}], "previousStatement": null, "nextStatement": null, "colour": 280 },
@@ -105,7 +115,9 @@
       { "type": "flow_selesai", "message0": "⬭ OVAL (Selesai)", "previousStatement": null, "colour": 345 }
     ]);
 
-    /* GENERATOR JAVASCRIPT */
+    /* ====================================================================
+       GENERATOR JAVASCRIPT
+       ==================================================================== */
     Blockly.JavaScript['flow_mulai'] = function(block) { return "alert('🟢 MULAI: " + block.getFieldValue('NAMA') + "');\n"; };
     Blockly.JavaScript['flow_io'] = function(block) { return "alert('🟪 I/O: " + block.getFieldValue('DATA') + "');\n"; };
     Blockly.JavaScript['flow_proses'] = function(block) { return "alert('🟦 PROSES: " + block.getFieldValue('AKSI') + "');\n"; };
@@ -122,7 +134,9 @@
       zoom: { controls: true, wheel: false, startScale: 1.1, maxScale: 3, minScale: 0.5 }
     });
 
-    /* FUNGSI NAVIGASI MATERI */
+    /* ====================================================================
+       FUNGSI NAVIGASI MATERI
+       ==================================================================== */
     function gantiMateri(materi, btn) {
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
@@ -132,7 +146,7 @@
       const levelContainer = document.getElementById('levelFlowchart');
 
       if (materi === 'flowchart') {
-        judul.innerText = "Babak 1: Berpikir Komputasional (Flowchart)";
+        judul.innerText = "Babak 1: Berpikir Komputasional (Kasus Sehari-hari)";
         deskripsi.innerHTML = "<b>Pilih Level Tantangan di bawah ini:</b><br>Siswa akan belajar merangkai logika aktivitas mereka sendiri menggunakan simbol baku.";
         levelContainer.style.display = "flex";
       } else {
@@ -148,7 +162,9 @@
       workspace.clear();
     }
 
-    /* FUNGSI SET KASUS (LEVEL 1-4) */
+    /* ====================================================================
+       FUNGSI SET KASUS (LEVEL 1-4)
+       ==================================================================== */
     function setKasus(level) {
       const deskripsi = document.getElementById('deskripsiMateri');
       if(level === 1) {
@@ -163,12 +179,20 @@
       workspace.clear();
     }
 
+    /* ====================================================================
+       FUNGSI EKSEKUSI (TOMBOL UJI COBA)
+       ==================================================================== */
     function jalankanSimulasi() {
       var code = Blockly.JavaScript.workspaceToCode(workspace);
       if (code) {
-          try { eval(code); } catch (e) { alert("Error: " + e); }
+          try { 
+              // Eksekusi kode javascript yang dihasilkan dari blok
+              eval(code); 
+          } catch (e) { 
+              alert("Error saat mengeksekusi blok: " + e); 
+          }
       } else {
-          alert("Kanvas kosong! Tarik simbol dari menu sebelah kiri.");
+          alert("Papan simulasi masih kosong! Silakan tarik dan susun simbol dari menu sebelah kiri terlebih dahulu.");
       }
     }
   </script>
