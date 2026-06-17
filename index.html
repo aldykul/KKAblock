@@ -8,7 +8,7 @@
   <script src="https://unpkg.com/blockly@8.0.0/blockly_compressed.js"></script>
   <script src="https://unpkg.com/blockly@8.0.0/blocks_compressed.js"></script>
   <script src="https://unpkg.com/blockly@8.0.0/javascript_compressed.js"></script>
-  <script src="https://unpkg.com/blockly@8.0.0/msg/id.js"></script>
+  <script src="https://unpkg.com/blockly@8.0.0/msg/js/id.js"></script>
   
   <style>
     body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; margin: 0; padding: 20px; background-color: #f8fafc; color: #1e293b; }
@@ -89,7 +89,6 @@
   </div>
 
   <div id="tab-flowchart" class="content-section active">
-    
     <div class="materi-awal">
       <h3>📚 Materi Dasar: Apa itu Algoritma & Flowchart?</h3>
       <div class="materi-content">
@@ -188,16 +187,15 @@
   </div>
 
   <div id="tab-etika" class="content-section">
-
     <div class="materi-awal">
       <h3>📚 Materi Dasar: Literasi & Etika Kecerdasan Artifisial</h3>
       <div class="materi-content">
         <p><b>Literasi Digital</b> adalah kemampuan memahami, mengevaluasi, dan menyikapi informasi digital secara kritis. Sedangkan <b>Etika Kecerdasan Artifisial (AI)</b> adalah prinsip moral dalam penggunaan teknologi AI agar tidak merugikan masyarakat.</p>
         <p><b>Pemanfaatan & Prinsip Utama di Kehidupan Sehari-hari:</b></p>
         <ul>
-          <li><b>Menjaga Jejak Digital:</b> Tidak melakukan <i>oversharing</i> (menyebarkan identitas NIK/Kartu Pelajar) yang bisa memicu kejahatan finansial (Pinjol ilegal).</li>
-          <li><b>Saring Sebelum Sharing:</b> Memverifikasi (Fact-Checking) informasi, terutama membedakan video asli dari manipulasi AI Generatif seperti <b>Deepfake</b>.</li>
-          <li><b>Keamanan Sistem (IoT):</b> Sebagai pembuat teknologi, kita beretika melindungi privasi data (misal sidik jari) dengan enkripsi agar tidak disadap <i>hacker</i>.</li>
+          <li><b>Menjaga Jejak Digital:</b> Tidak melakukan <i>oversharing</i> (menyebarkan identitas NIK/Kartu Pelajar) yang bisa memicu kejahatan finansial.</li>
+          <li><b>Saring Sebelum Sharing:</b> Memverifikasi (Fact-Checking) informasi, membedakan video asli dari manipulasi AI (<b>Deepfake/Voice Cloning</b>).</li>
+          <li><b>Keamanan Sistem (IoT):</b> Sebagai pembuat teknologi, kita beretika melindungi privasi data (misal sidik jari) dengan enkripsi agar tidak disadap.</li>
         </ul>
       </div>
     </div>
@@ -231,27 +229,26 @@
   </div>
 
   <div id="tab-koding" class="content-section">
-
     <div class="materi-awal">
       <h3>📚 Materi Dasar: Pemrograman Visual (Koding Blok)</h3>
       <div class="materi-content">
-        <p><b>Koding Blok</b> mempermudah kita merakit program logika mesin menggunakan kepingan blok <i>puzzle</i> visual, sehingga kita bisa fokus pada Algoritma tanpa pusing menghafal sintaks bahasa pemrograman (*syntax error*).</p>
+        <p><b>Koding Blok</b> mempermudah kita merakit program logika mesin menggunakan kepingan blok <i>puzzle</i> visual, sehingga kita bisa fokus pada Algoritma tanpa pusing menghafal sintaks bahasa pemrograman.</p>
         <p><b>Struktur Utama pada Blok Pembelajaran Kita:</b></p>
         <ul>
-          <li><b>Variabel:</b> Sebagai "Wadah" untuk menyimpan data yang bisa berubah (contoh: Menyimpan Skor = 100).</li>
-          <li><b>Logika Kondisi (JIKA/IF):</b> Menjadi "Otak" sistem untuk mengambil keputusan (Misal: <i>JIKA</i> kapasitas penuh, <i>MAKA</i> lapor).</li>
-          <li><b>Perulangan (Loop):</b> Mengotomatisasi instruksi mesin agar bekerja berulang kali secara efisien.</li>
+          <li><b>Variabel:</b> "Wadah" untuk menyimpan data sensor (misal Variabel Nilai = 100).</li>
+          <li><b>Logika Kondisi (JIKA/IF):</b> "Otak" sistem mengambil keputusan. (Misal: <i>JIKA</i> kapasitas penuh, <i>MAKA</i> lapor).</li>
+          <li><b>Perulangan (Loop):</b> Mengotomatisasi instruksi agar bekerja mandiri berkali-kali.</li>
         </ul>
       </div>
     </div>
 
     <div class="level-nav">
-      <button class="lvl-btn active" onclick="setKodingLvl(1, this)">Lv 1: Hello World</button>
+      <button class="lvl-btn active" onclick="setKodingLvl(1, this)">Lv 1: Teks Pertama</button>
       <button class="lvl-btn" onclick="setKodingLvl(2, this)">Lv 2: Variabel</button>
       <button class="lvl-btn" onclick="setKodingLvl(3, this)">Lv 3: Logika IF</button>
-      <button class="lvl-btn" onclick="setKodingLvl(4, this)">Lv 4: Perulangan</button>
-      <button class="lvl-btn" onclick="setKodingLvl(5, this)">Lv 5: Logika Ganda (AND/OR)</button>
-      <button class="lvl-btn" onclick="setKodingLvl(6, this)">Lv 6: Sensor IoT Cerdas</button>
+      <button class="lvl-btn" onclick="setKodingLvl(4, this)">Lv 4: Perulangan (Loop)</button>
+      <button class="lvl-btn" onclick="setKodingLvl(5, this)">Lv 5: Logika Ganda (AND)</button>
+      <button class="lvl-btn" onclick="setKodingLvl(6, this)">Lv 6: Simulasi Sensor IoT</button>
     </div>
 
     <div class="materi-box" id="kd-materi"></div>
@@ -286,8 +283,8 @@
         <block type="text"><field name="TEXT">Halo Informatika!</field></block>
         <block type="text"><field name="TEXT">Lulus</field></block>
         <block type="text"><field name="TEXT">Bunyikan Alarm!</field></block>
-        <block type="text"><field name="TEXT">Akses Diterima</field></block>
         <block type="text"><field name="TEXT">Bahaya! Suhu Panas</field></block>
+        <block type="text"><field name="TEXT">Kirim Data ke Cloud!</field></block>
       </category>
       <category name="3. Variabel & Angka" colour="#9C27B0">
         <block type="variables_set"><field name="VAR" id="var_nilai">nilai</field></block>
@@ -299,14 +296,13 @@
         <block type="controls_if"></block>
         <block type="logic_compare"></block>
         <block type="logic_operation"></block>
-        <block type="logic_boolean"></block>
       </category>
       <category name="5. Perulangan (Loop)" colour="#4CAF50">
         <block type="controls_repeat_ext">
           <value name="TIMES"><shadow type="math_number"><field name="NUM">3</field></shadow></value>
         </block>
       </category>
-      <category name="6. Sensor & IoT" colour="#00BCD4">
+      <category name="6. Sensor (IoT)" colour="#00BCD4">
         <block type="text"><field name="TEXT">Sensor ZA620_M5</field></block>
         <block type="text"><field name="TEXT">Kapasitas Penuh</field></block>
         <block type="text"><field name="TEXT">Sensor Suhu (Celcius)</field></block>
@@ -469,19 +465,19 @@
           <button class="case-btn" onclick="jawabEtika('salah', 'D. Terus mengajak ngobrol agar pulsa penipu habis.', 'Berbahaya! Suara aslimu bisa direkam balik oleh mereka untuk membuat Voice Cloning baru atas namamu.')">D. Terus mengajak ngobrol agar pulsa penipu habis.</button>
         `;
       } else if (lvl === 5) {
-        judul.innerText = "Level 5: Etika Penggunaan AI Generatif (Plagiarisme)";
+        judul.innerText = "Level 5: Etika Penggunaan AI Generatif (Plagiarisme ChatGPT)";
         media.innerHTML = `<img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80" alt="AI Chat" onerror="this.src='https://via.placeholder.com/800x400?text=ChatGPT+Ethics'">`;
-        desc.innerHTML = "<b>Skenario:</b> Guru memberikan tugas membuat esai tentang pengalaman pribadimu selama liburan. Kamu sedang malas mengetik.";
+        desc.innerHTML = "<b>Skenario:</b> Guru memberikan tugas membuat esai tentang pengalaman pribadimu. Kamu sedang malas mengetik.";
         opsi.innerHTML = `
           <button class="case-btn" onclick="jawabEtika('salah', 'A. Menyuruh ChatGPT menuliskannya dari awal sampai akhir dan langsung mengumpulkannya.', 'Ini adalah Plagiarisme Akademik. Kamu membohongi diri sendiri dengan menggunakan mesin untuk menciptakan pengalaman palsu.')">A. Menyuruh ChatGPT menuliskannya dari awal sampai akhir dan langsung mengumpulkannya.</button>
-          <button class="case-btn" onclick="jawabEtika('benar', 'B. Menggunakan ChatGPT hanya untuk mencari ide kerangka tulisan, lalu mengetik isi ceritanya dengan bahasa sendiri.', 'Sangat beretika! AI adalah alat bantu (Co-pilot), bukan pengganti nalar dan kejujuran manusia.')">B. Menggunakan ChatGPT hanya untuk mencari ide kerangka tulisan, lalu mengetik isi ceritanya dengan bahasa sendiri.</button>
+          <button class="case-btn" onclick="jawabEtika('benar', 'B. Menggunakan ChatGPT hanya untuk mencari ide kerangka tulisan, lalu mengetik ceritanya sendiri.', 'Sangat beretika! AI adalah alat bantu (Co-pilot), bukan pengganti nalar dan kejujuran manusia.')">B. Menggunakan ChatGPT hanya untuk mencari ide kerangka tulisan, lalu mengetik ceritanya sendiri.</button>
           <button class="case-btn" onclick="jawabEtika('salah', 'C. Menyuruh AI membuatnya, lalu menyalahkan AI jika nilainya jelek.', 'Manusia adalah penanggung jawab tertinggi (Human in the loop), bukan mesin.')">C. Menyuruh AI membuatnya, lalu menyalahkan AI jika nilainya jelek.</button>
           <button class="case-btn" onclick="jawabEtika('salah', 'D. Membayar teman untuk mengerjakan tugas tersebut.', 'Ini sama saja dengan berbuat curang dan tidak mengasah kemampuan literasimu.')">D. Membayar teman untuk mengerjakan tugas tersebut.</button>
         `;
       } else if (lvl === 6) {
         judul.innerText = "Level 6: Keamanan Data & Sistem Jaringan (IoT)";
         media.innerHTML = `<iframe src="https://www.youtube.com/embed/z5nc9MDbvkw?rel=0" allowfullscreen></iframe>`;
-        desc.innerHTML = "<b>Skenario Video:</b> Kamu merakit alat sistem cerdas IoT di bengkel sekolah. Sistem memancarkan data biometrik (sidik jari) ke server tanpa menggunakan sandi keamanan (enkripsi) di jaringan WiFi publik.";
+        desc.innerHTML = "<b>Skenario Video:</b> Kamu merakit alat sistem cerdas IoT di bengkel sekolah. Sistem memancarkan data biometrik (sidik jari) ke server tanpa menggunakan sandi keamanan (enkripsi).";
         opsi.innerHTML = `
           <button class="case-btn" onclick="jawabEtika('salah', 'A. Biarkan saja, IoT cuma alat mainan sekolah.', 'Alat sekolah sekalipun jika merekam biometrik siswa asli harus diperlakukan sebagai data rahasia.')">A. Biarkan saja, IoT cuma alat mainan sekolah.</button>
           <button class="case-btn" onclick="jawabEtika('benar', 'B. Segera terapkan Enkripsi End-to-End karena data bisa dicegat (di-hack) oleh pihak luar.', 'Pola pikir Cybersecurity tingkat lanjut! Tanggung jawab programmer adalah menjamin kerahasiaan data.')">B. Segera terapkan Enkripsi End-to-End karena data bisa dicegat (di-hack) oleh pihak luar.</button>
@@ -510,45 +506,19 @@
       panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    /* === FITUR 3: KODING BLOK (6 LEVEL LENGKAP & TUTORIAL) === */
+    /* === FITUR 3: KODING BLOK === */
     var workspace = Blockly.inject('blocklyArea', {
       toolbox: document.getElementById('toolbox'), trashcan: true,
       zoom: { controls: true, wheel: false, startScale: 1.1, maxScale: 3, minScale: 0.5 }
     });
 
     const hintsKD = {
-      1: [
-        "Langkah 1: Klik kategori 'Aksi (Output)' di menu kiri, ambil blok 'Cetak'.",
-        "Langkah 2: Buka kategori 'Teks & Data', ambil blok teks 'Halo Informatika!'.",
-        "Langkah 3: Pasangkan blok teks tersebut ke dalam celah blok 'Cetak'."
-      ],
-      2: [
-        "Langkah 1: Buka kategori 'Variabel & Angka', ambil blok 'Tetapkan nilai ke...'.",
-        "Langkah 2: Ambil blok angka '100' dan pasangkan ke blok variabel tadi.",
-        "Langkah 3: Buka kategori 'Aksi (Output)', ambil blok 'Cetak', lalu isi ruang kosongnya dengan blok 'nilai' (dari menu Variabel)."
-      ],
-      3: [
-        "Langkah 1: Buka kategori 'Logika (IF)', ambil blok 'Jika / do'.",
-        "Langkah 2: Ambil blok perbandingan '=' dari menu Logika.",
-        "Langkah 3: Di blok perbandingan, pasangkan blok 'nilai' (dari menu Variabel) dengan blok angka '100'.",
-        "Langkah 4: Di dalam celah 'do', pasangkan blok 'Cetak' dan letakkan blok teks 'Lulus' di dalamnya."
-      ],
-      4: [
-        "Langkah 1: Buka kategori 'Perulangan (Loop)' dan ambil blok 'Ulangi 3 kali'.",
-        "Langkah 2: Buka kategori 'Aksi (Output)', ambil blok 'Cetak' dan letakkan di dalam perut blok perulangan tadi.",
-        "Langkah 3: Buka kategori 'Teks & Data', ambil blok teks 'Bunyikan Alarm!' dan tempelkan ke blok cetak tersebut."
-      ],
-      5: [
-        "Langkah 1: Ambil blok 'Jika / do' dari menu Logika.",
-        "Langkah 2: Karena ini logika ganda, ambil blok '... dan ...' (AND) dari menu Logika dan pasangkan ke IF.",
-        "Langkah 3: Di celah pertama AND, buat perbandingan 'nilai = 100'. Di celah kedua AND, buat perbandingan 'Sensor Suhu (Celcius) = 40'.",
-        "Langkah 4: Jika keduanya terpenuhi, beri aksi Cetak teks 'Bahaya! Suhu Panas'."
-      ],
-      6: [
-        "Langkah 1: Kita mensimulasikan sistem cerdas IoT! Ambil blok 'Jika / do' dari menu Logika.",
-        "Langkah 2: Ambil blok perbandingan '=', pasangkan blok 'Sensor ZA620_M5' dengan teks 'Kapasitas Penuh' (Keduanya ada di menu Sensor & IoT).",
-        "Langkah 3: Di dalam celah 'do', pasang perintah 'Cetak' dan tempelkan blok teks 'Kirim Data ke Cloud!'."
-      ]
+      1: ["Langkah 1: Klik kategori 'Aksi (Output)' di menu kiri, ambil blok 'Cetak'.", "Langkah 2: Buka kategori 'Teks & Data', ambil blok teks 'Halo Informatika!'.", "Langkah 3: Pasangkan blok teks tersebut ke dalam celah blok 'Cetak'."],
+      2: ["Langkah 1: Buka kategori 'Variabel & Angka', ambil blok 'Tetapkan nilai ke...'.", "Langkah 2: Ambil blok angka '100' dan pasangkan ke blok variabel tadi.", "Langkah 3: Buka kategori 'Aksi (Output)', ambil blok 'Cetak', lalu isi ruang kosongnya dengan blok 'nilai' (dari menu Variabel)."],
+      3: ["Langkah 1: Buka kategori 'Logika (IF & Cek)', ambil blok 'Jika / do'.", "Langkah 2: Ambil blok perbandingan '=' dari menu Logika.", "Langkah 3: Di blok perbandingan, pasangkan blok 'nilai' (dari menu Variabel) dengan blok angka '100'.", "Langkah 4: Di dalam celah 'do', pasangkan blok 'Cetak' dan letakkan blok teks 'Lulus' di dalamnya."],
+      4: ["Langkah 1: Buka kategori 'Perulangan (Loop)' dan ambil blok 'Ulangi 3 kali'.", "Langkah 2: Buka kategori 'Aksi (Output)', ambil blok 'Cetak' dan letakkan di dalam perut blok perulangan tadi.", "Langkah 3: Buka kategori 'Teks & Data', ambil blok teks 'Bunyikan Alarm!' dan tempelkan ke blok cetak tersebut."],
+      5: ["Langkah 1: Ambil blok 'Jika / do' dari menu Logika.", "Langkah 2: Karena ini logika ganda, ambil blok '... dan ...' (AND) dari menu Logika dan pasangkan ke IF.", "Langkah 3: Di celah pertama AND, buat perbandingan 'nilai = 100'. Di celah kedua AND, buat perbandingan 'Sensor Suhu (Celcius) = 40'.", "Langkah 4: Jika keduanya terpenuhi, beri aksi Cetak teks 'Bahaya! Suhu Panas'."],
+      6: ["Langkah 1: Kita mensimulasikan sistem cerdas IoT! Ambil blok 'Jika / do' dari menu Logika.", "Langkah 2: Ambil blok perbandingan '=', pasangkan blok 'Sensor ZA620_M5' dengan teks 'Kapasitas Penuh' (Keduanya ada di menu Sensor & IoT).", "Langkah 3: Di dalam celah 'do', pasang perintah 'Cetak' dan tempelkan blok teks 'Kirim Data ke Cloud!'."]
     };
     let indexKD = 0;
 
